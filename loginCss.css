@@ -166,7 +166,7 @@ html {
     height: 30px;
 
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 .registerBoxMain>span:nth-of-type(2) {
     position: absolute;
@@ -186,7 +186,7 @@ html {
     height: 30px;
 
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 .registerBoxMain>span:nth-of-type(4) {
     position: absolute;
@@ -206,7 +206,7 @@ html {
     height: 30px;
 
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 .registerBoxMain>input:nth-of-type(5) {
     position: absolute;
@@ -219,7 +219,7 @@ html {
     height: 30px;
 
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
 }
 .registerBoxMain>span:nth-of-type(7) {
     position: absolute;
