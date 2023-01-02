@@ -61,20 +61,19 @@ html {
     border-bottom: 2px solid royalblue;
 }
 .loginBoxMain {
-    float: left;
     position: absolute;
-    top: 100px;
+    top: 80px;
     
     border-radius: 10px;
     width: 800px;
-    height: 420px;
+    height: 420px;     
 
     visibility: visible;
 }
 .loginBoxMain>input:nth-of-type(1) {
     position: absolute;
     left: 225px;
-    top: 80px;
+    top: 100px;
 
     border: 0 solid black;
     border-bottom: 2px solid #e0e0e0;
@@ -91,7 +90,7 @@ html {
 .loginBoxMain>input:nth-of-type(2) {
     position: absolute;
     left: 225px;
-    top: 140px;
+    top: 160px;
 
     border: 0 solid black;
     border-bottom: 2px solid #e0e0e0;
@@ -109,7 +108,7 @@ html {
     display: inline-block;
     position: absolute;
     left: 225px;
-    bottom: 100px;
+    bottom: 80px;
 
     border-radius: 5px;
     width: 350px;
@@ -126,20 +125,17 @@ html {
     background-color: rgb(43, 80, 191);
 }
 .registerBoxMain {
-    float: left;
     position: absolute;
-    top: 100px;
+    top: 80px;
     
     border-radius: 10px;
     width: 800px;
     height: 420px;
-
-    visibility: hidden;
 }
 .registerBoxMain>input:nth-of-type(1) {
     position: absolute;
     left: 225px;
-    top: 80px;
+    top: 60px;
 
     border: 0 solid black;
     border-bottom: 2px solid #e0e0e0;
@@ -156,7 +152,7 @@ html {
 .registerBoxMain>input:nth-of-type(2) {
     position: absolute;
     left: 225px;
-    top: 140px;
+    top: 120px;
 
     border: 0 solid black;
     border-bottom: 2px solid #e0e0e0;
@@ -165,16 +161,33 @@ html {
 
     outline: none;
     line-height: 50px;
-    font-size: 50px;
+    font-size: 20px;
 }
 .registerBoxMain>input:nth-of-type(2)::-webkit-input-placeholder {
+    font-size: 15px;
+}
+.registerBoxMain>input:nth-of-type(3) {
+    position: absolute;
+    left: 225px;
+    top: 180px;
+
+    border: 0 solid black;
+    border-bottom: 2px solid #e0e0e0;
+    width: 350px;
+    height: 50px;
+
+    outline: none;
+    line-height: 50px;
+    font-size: 20px;
+}
+.registerBoxMain>input:nth-of-type(3)::-webkit-input-placeholder {
     font-size: 15px;
 }
 .registerBtn {
     display: inline-block;
     position: absolute;
     left: 225px;
-    bottom: 100px;
+    bottom: 80px;
 
     border-radius: 5px;
     width: 350px;
@@ -194,7 +207,7 @@ html {
     display: inline-block;
     position: absolute;
     left: 585px;
-    top: 80px;
+    top: 60px;
 
     height: 50px;
 
@@ -207,7 +220,7 @@ html {
     display: inline-block;
     position: absolute;
     left: 585px;
-    top: 140px;
+    top: 120px;
 
     height: 50px;
 
@@ -216,4 +229,108 @@ html {
     color: red;
     visibility: hidden;
 }
+.passwordNotMatch {
+    display: inline-block;
+    position: absolute;
+    left: 585px;
+    top: 180px;
 
+    height: 50px;
+
+    line-height: 50px;
+    font-size: 15px;
+    color: red;
+    visibility: hidden;
+}
+.registerByEmail {
+    display: inline-block;
+    position: absolute;
+    right: 225px;
+    bottom: 160px;
+
+    font-size: 14px;
+    color: #979d9d;
+    cursor: pointer;
+}
+.emailBoxMain {
+    position: absolute;
+    top: 80px;
+    
+    border-radius: 10px;
+    width: 800px;
+    height: 420px;
+}
+.emailBoxMain>input:nth-of-type(1) {
+    position: absolute;
+    left: 225px;
+    top: 60px;
+
+    border: 0 solid black;
+    border-bottom: 2px solid #e0e0e0;
+    width: 350px;
+    height: 50px;
+
+    outline: none;
+    line-height: 50px;
+    font-size: 20px;
+}
+.emailBoxMain>input:nth-of-type(1)::-webkit-input-placeholder {
+    font-size: 15px;
+}
+.emailBoxMain>input:nth-of-type(2) {
+    position: absolute;
+    left: 225px;
+    top: 120px;
+
+    border: 0 solid black;
+    border-bottom: 2px solid #e0e0e0;
+    width: 350px;
+    height: 50px;
+
+    outline: none;
+    line-height: 50px;
+    font-size: 20px;
+}
+.emailBoxMain>input:nth-of-type(2)::-webkit-input-placeholder {
+    font-size: 15px;
+}
+.emailBoxMain>input:nth-of-type(3) {
+    position: absolute;
+    left: 225px;
+    top: 180px;
+
+    border: 0 solid black;
+    border-bottom: 2px solid #e0e0e0;
+    width: 350px;
+    height: 50px;
+
+    outline: none;
+    line-height: 50px;
+    font-size: 20px;
+}
+.emailBoxMain>input:nth-of-type(3)::-webkit-input-placeholder {
+    font-size: 15px;
+}
+.getVerificationCode {
+    position: absolute;
+    display: inline-block;
+    top: 185px;
+    left: 495px;
+
+    width: 80px;
+    height: 40px;
+
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.registerBack {
+    display: inline-block;
+    position: absolute;
+    right: 225px;
+    bottom: 160px;
+
+    font-size: 14px;
+    color: #979d9d;
+    cursor: pointer;
+}
