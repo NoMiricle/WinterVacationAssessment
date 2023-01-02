@@ -78,4 +78,4 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
     loginBox.appendChild(div)
 
 })
-// loginBoxTop.children[0].click() //默认选中登录
+loginBoxTop.children[0].click() //默认选中登录
