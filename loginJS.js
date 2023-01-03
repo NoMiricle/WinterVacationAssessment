@@ -1,4 +1,3 @@
-
 let loginBoxTop = document.querySelector('.loginBoxTop')
 let loginBox = document.querySelector('.loginBox')
 let loginBtn = document.querySelector('.loginBtn')
@@ -21,16 +20,44 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
         </span>
     `
     div.children[3].addEventListener('click', ()=> {//密码可见可不见
-        if(div.children[3].children[0].innerHTML != '') {
+        if(div.children[3].children[0].innerHTML != '') {//不可见
             div.children[3].children[0].innerHTML = ''
             div.children[1].style.fontSize = '25px'
             div.children[1].setAttribute('type', 'password')
-        }else{
+        }else{//可见
             div.children[3].children[0].innerHTML = '/'
             div.children[1].style.fontSize = '20px'
             div.children[1].setAttribute('type', 'text')
         }
     })
+
+    div.children[2].addEventListener('click', ()=> {//登录
+        if(div.children[0].value != '0' && div.children[1].value != '') {
+            async function login() {
+                let obj = 
+                {
+                    "username/email": div.children[0].value,
+                    "password": div.children[1].value
+                }
+            
+                try {
+                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/login', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    console.log(result.json())
+
+                } catch(err) {
+                    console.log(err)
+                }
+            }
+            login()
+        }
+    })
+
     loginBox.appendChild(div)
 })
 
@@ -60,6 +87,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
         <span class="verificationCodeErrow">验证码错误</span>
         <span class="registerBtn">注册</span>
     `
+    
     div.children[2].addEventListener('input', ()=> { //注册邮箱填写事件
         if(!/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/.test(div.children[2].value)){
             div.children[4].style.visibility = 'visible' //显示邮箱错误
@@ -67,6 +95,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
             div.children[4].style.visibility = 'hidden'
         }
     })
+    
     div.children[5].addEventListener('input', ()=> { //注册密码填写事件
         if(/[^a-z^0-9^A-Z]/.test(div.children[5].value)||!/^[a-zA-Z]/.test(div.children[5].value)){
             div.children[7].style.visibility = 'visible' //显示密码错误
@@ -80,6 +109,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
             div.children[9].style.visibility = 'visible'
         }
     })
+    
     div.children[8].addEventListener('input', ()=> { //判断二次输入密码是否一致
         if(div.children[8].value === div.children[5].value) {
             div.children[9].style.visibility = 'hidden'
@@ -87,9 +117,11 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
             div.children[9].style.visibility = 'visible'
         }
     })
+    
     div.children[10].addEventListener('input', ()=> { //判断验证码
         div.children[13].style.visibility = 'hidden'
     })
+    
     div.children[12].addEventListener('click', ()=> { //获取验证码
         if(div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden') {
             async function post() {
@@ -100,7 +132,6 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
                             'Content-Type':'application/json'
                         }
                     }) 
-                    console.log(result)
                     console.log(result.json())
                 } catch(err) {
                     console.log(err)
@@ -128,11 +159,12 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
             div.children[4].style.visibility = 'visible' //显示邮箱错误
         }
     })
-    loginBox.appendChild(div)
+    
+    loginBox.appendChild(div) //加载页面
 
     let registerBtn = document.querySelector('.registerBtn')
 
-    registerBtn.addEventListener('click', ()=> { //注册事件
+    registerBtn.addEventListener('click', ()=> { //注册按钮点击事件
         
         if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/ && div.children[13].style.visibility === 'hidden'/*验证码正确*/) {
             async function register() {
