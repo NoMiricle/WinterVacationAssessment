@@ -16,9 +16,24 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
         <input type="text" placeholder="请输入账号">
         <input type="password" placeholder="请输入密码">
         <span class="loginBtn">登录</span>
+        <span class="watchEye">
+            <span>\</span>
+        </span>
     `
+    div.children[3].addEventListener('click', ()=> {//密码可见可不见
+        if(div.children[3].children[0].innerHTML != '') {
+            div.children[3].children[0].innerHTML = ''
+            div.children[1].style.fontSize = '25px'
+            div.children[1].setAttribute('type', 'password')
+        }else{
+            div.children[3].children[0].innerHTML = '/'
+            div.children[1].style.fontSize = '20px'
+            div.children[1].setAttribute('type', 'text')
+        }
+    })
     loginBox.appendChild(div)
 })
+
 loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事件
     loginBoxTop.children[0].classList.remove('loginBoxTop_checked') //取消登录按钮的选中状态
     loginBoxTop.children[1].classList.add('loginBoxTop_checked') //选中注册
@@ -73,7 +88,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
         }
     })
     div.children[10].addEventListener('input', ()=> { //判断验证码
-
+        div.children[13].style.visibility = 'hidden'
     })
     div.children[12].addEventListener('click', ()=> { //获取验证码
         if(div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden') {
@@ -90,6 +105,9 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
             post()
             //60s再次获取验证码
             div.children[12].classList.add('onclickForbidden') //禁用点击
+            div.children[12].innerHTML = `
+                    60秒之后可再次刷新
+                `
             let i = 60
             let myInterval = setInterval(()=>{
                 i--
@@ -111,16 +129,28 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
     let registerBtn = document.querySelector('.registerBtn')
 
     registerBtn.addEventListener('click', ()=> { //注册事件
-        // console.log(div.children[0].value != '')
-        // console.log(div.children[2].value/*邮箱不为空*/ !='')
-        // console.log(div.children[4].style.visibility === 'hidden');
-        // console.log(div.children[5] != '');
-        // console.log(div.children[7].style.visibility === 'hidden');
-        // console.log(div.children[9].style.visibility === 'hidden');
-        // console.log( div.children[10].value != '');
-        // console.log(div.children[13].style.visibility === 'hidden');
+        
         if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/ && div.children[13].style.visibility === 'hidden'/*验证码正确*/) {
-
+            async function login() {
+                let obj = 
+                {
+                    "username": div.children[0].value,
+                    "email": div.children[2].value,
+                    "password": div.children[5],
+                    "re-password": div.children[5],
+                    "verification": div.children[10].value
+                }
+                
+                let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/registration', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(obj)
+                })
+                console.log(result.json())
+            }
+            login()
         }
     })
 
