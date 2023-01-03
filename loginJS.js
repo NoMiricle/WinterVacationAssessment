@@ -1,5 +1,8 @@
+
 let loginBoxTop = document.querySelector('.loginBoxTop')
 let loginBox = document.querySelector('.loginBox')
+let loginBtn = document.querySelector('.loginBtn')
+
 loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事件
     loginBoxTop.children[1].classList.remove('loginBoxTop_checked') //取消注册按钮的选中状态
     loginBoxTop.children[0].classList.add('loginBoxTop_checked') //选中登录
@@ -73,9 +76,53 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
 
     })
     div.children[12].addEventListener('click', ()=> { //获取验证码
-
+        if(div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden') {
+            async function post() {
+                let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/verification',{
+                    method: 'post',
+                    headers: {
+                        'Content-Type':'application/json'
+                    }
+                }) 
+                console.log(result)
+                console.log(result.json())
+            }
+            post()
+            //60s再次获取验证码
+            div.children[12].classList.add('onclickForbidden') //禁用点击
+            let i = 60
+            let myInterval = setInterval(()=>{
+                i--
+                div.children[12].innerHTML = `
+                    ${i}秒之后可再次刷新
+                `
+            }, 1000)
+            setTimeout(()=> {
+                clearInterval(myInterval)
+                div.children[12].classList.remove('onclickForbidden')
+                div.children[12].innerHTML = '再次获取验证码'
+            }, 60000)
+        }else{
+            div.children[4].style.visibility = 'visible' //显示邮箱错误
+        }
     })
     loginBox.appendChild(div)
+
+    let registerBtn = document.querySelector('.registerBtn')
+
+    registerBtn.addEventListener('click', ()=> { //注册事件
+        // console.log(div.children[0].value != '')
+        // console.log(div.children[2].value/*邮箱不为空*/ !='')
+        // console.log(div.children[4].style.visibility === 'hidden');
+        // console.log(div.children[5] != '');
+        // console.log(div.children[7].style.visibility === 'hidden');
+        // console.log(div.children[9].style.visibility === 'hidden');
+        // console.log( div.children[10].value != '');
+        // console.log(div.children[13].style.visibility === 'hidden');
+        if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/ && div.children[13].style.visibility === 'hidden'/*验证码正确*/) {
+
+        }
+    })
 
 })
 loginBoxTop.children[0].click() //默认选中登录
