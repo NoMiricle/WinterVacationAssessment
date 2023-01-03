@@ -93,14 +93,18 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
     div.children[12].addEventListener('click', ()=> { //获取验证码
         if(div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden') {
             async function post() {
-                let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/verification',{
-                    method: 'post',
-                    headers: {
-                        'Content-Type':'application/json'
-                    }
-                }) 
-                console.log(result)
-                console.log(result.json())
+                try {
+                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/verification',{
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json'
+                        }
+                    }) 
+                    console.log(result)
+                    console.log(result.json())
+                } catch(err) {
+                    console.log(err)
+                }
             }
             post()
             //60s再次获取验证码
@@ -131,7 +135,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
     registerBtn.addEventListener('click', ()=> { //注册事件
         
         if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/ && div.children[13].style.visibility === 'hidden'/*验证码正确*/) {
-            async function login() {
+            async function register() {
                 let obj = 
                 {
                     "username": div.children[0].value,
@@ -140,17 +144,21 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
                     "re-password": div.children[5],
                     "verification": div.children[10].value
                 }
-                
-                let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/registration', {
-                    method: 'post',
-                    headers: {
-                        'Content-Type':'application/json'
-                    },
-                    body: JSON.stringify(obj)
-                })
-                console.log(result.json())
+                try {
+                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/registration', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json'
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    console.log(result.json())
+                    alert('注册成功')
+                } catch(err) {
+                    alert('注册失败')
+                }
             }
-            login()
+            register()
         }
     })
 
