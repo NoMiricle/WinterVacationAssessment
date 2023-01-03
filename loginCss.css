@@ -94,11 +94,12 @@ html {
 
     border: 0 solid black;
     border-bottom: 2px solid #e0e0e0;
+    padding: 15px 0;
     width: 350px;
     height: 50px;
 
     outline: none;
-    line-height: 50px;
+
     font-size: 50px;
 }
 .loginBoxMain>input:nth-of-type(2)::-webkit-input-placeholder {
@@ -312,6 +313,10 @@ html {
     line-height: 20px;
     text-align: center;
     cursor: pointer;
+    font-size: 14px;
+}
+.onclickForbidden {
+    pointer-events: none;
 }
 .getVerificationCode:hover {
     color: #191818b9;
