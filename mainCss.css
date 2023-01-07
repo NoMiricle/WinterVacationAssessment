@@ -540,6 +540,7 @@ html {
     bottom: 15px;
     left: 16px;
 
+    border-radius: 5px;
     border: 1px solid royalblue;
     width: 262px;
     height: 40px;
