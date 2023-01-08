@@ -133,11 +133,12 @@ html {
 .topUpMain>span:nth-of-type(2)>span:nth-of-type(1) {
     float: left;
 
+    padding-left: 11px;
+    padding-top: 5px;
     width: 40px;
     height: 30px;
-    background-image: url(./img/sprites.png);
-    background-position: -295px -70px;
 }
+
 .topUpMain>span:nth-of-type(2)>span:nth-of-type(2) {
     float: left;
 
@@ -163,10 +164,10 @@ html {
 .topUpMain>span:nth-of-type(3)>span:nth-of-type(1) {
     float: left;
 
+    padding-left: 11px;
+    padding-top: 5px;
     width: 40px;
     height: 30px;
-    background-image: url(./img/sprites.png);
-    background-position: -200px -70px;
 }
 .topUpMain>span:nth-of-type(3)>span:nth-of-type(2) {
     float: left;
@@ -398,10 +399,10 @@ html {
     left: 20px;
     top: 20px;
 
+    padding-left: 4px;
+    padding-top: 4px;
     width: 24px;
     height: 24px;
-    background-image: url(./img/taobao.png);
-    background-position: 0 -175px;
 }
 .creationCenter>span:nth-of-type(2) {
     position: absolute;
@@ -462,10 +463,7 @@ html {
     border-radius: 20px;
     width: 40px;
     height: 40px;
-    background-image: url(./img/taobao.png);
-    background-position:center -476px;
-    background-repeat: no-repeat;
-    background-color: #b4add9;
+    background-color: rgb(187, 214, 254);
 }
 .sendVideo {
     position: absolute;
@@ -474,10 +472,7 @@ html {
     border-radius: 20px;
     width: 40px;
     height: 40px;
-    background-image: url(./img/taobao.png);
-    background-position:center -212px;
-    background-repeat: no-repeat;
-    background-color: #edafdf;
+    background-color: #ffe3bd;
 }
 .writeArticle {
     position: absolute;
@@ -486,10 +481,7 @@ html {
     border-radius: 20px;
     width: 40px;
     height: 40px;
-    background-image: url(./img/taobao.png);
-    background-position:center -166px;
-    background-repeat: no-repeat;
-    background-color: #ceb8bb;
+    background-color: #fff2b6;
 }
 .writeIdeas {
     position: absolute;
@@ -498,10 +490,7 @@ html {
     border-radius: 20px;
     width: 40px;
     height: 40px;
-    background-image: url(./img/taobao.png);
-    background-position:center -80px;
-    background-repeat: no-repeat;
-    background-color: #f7df9b;
+    background-color: #a9f0f0;
 }
 .creationCenter>span:nth-of-type(5) {
     position: absolute;
@@ -567,10 +556,10 @@ html {
     left: 20px;
     top: 20px;
 
+    padding-left: 4px;
+    padding-top: 4px;
     width: 24px;
     height: 24px;
-    background-image: url(./img/taobao.png);
-    background-position: 0 -175px;
 }
 .recommendedAttention>span:nth-of-type(2) {
     position: absolute;
