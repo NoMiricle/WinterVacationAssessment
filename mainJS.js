@@ -116,17 +116,23 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
     function getRandom(min, max) {
         return Math.floor(Math.random() * (max - min +1))
     }
-    if(mainContent.children[0].children.length < 50) {
-        for(let i = 1; i < 51; i++) {
-            let random = getRandom(1,2)
-            if(random === 0) { //文章
-                getArticle('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/essays', i)
-            }else { //问题
-                getQuestion('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/questions', i)
+    function thing(num) {
+        return new Promise((resolve) => {
+            if (num < 51) {
+                let random = getRandom(1,2)
+                if(random === 0) { //文章
+                    getArticle('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/essays', num)
+                }else { //问题
+                    getQuestion('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/questions', num)
+                }
+                num++
+                resolve()
             }
-        }
+        }).then(thing(num))
     }
     
+    let number = 1;
+    thing(number)
 })
 
 bodyTop.children[3].addEventListener('click', ()=> { //视频
