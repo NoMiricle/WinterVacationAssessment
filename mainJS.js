@@ -37,7 +37,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                 }
             })
             let res1 = await result.json()
-            console.log(res1.data.posts[0])
+            // console.log(res1.data.posts[0])
 
             article.innerHTML = `
                 <span>${num}</span>
@@ -83,7 +83,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                 }
             })
             let res1 = await result.json()
-            console.log(res1.data.posts[0])
+            // console.log(res1.data.posts[0])
 
             article.innerHTML = `
                 <span>${num}</span>
@@ -116,23 +116,17 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
     function getRandom(min, max) {
         return Math.floor(Math.random() * (max - min +1))
     }
-    function thing(num) {
-        return new Promise((resolve) => {
-            if (num < 51) {
-                let random = getRandom(1,2)
-                if(random === 0) { //文章
-                    getArticle('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/essays', num)
-                }else { //问题
-                    getQuestion('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/questions', num)
-                }
-                num++
-                resolve()
+    async function loading() {
+        for(let i = 1; i < 51; i++){
+            let random = getRandom(1,2)
+            if(random === 0) { //文章
+                await getArticle('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/essays', i)
+            }else { //问题
+                await getQuestion('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/questions', i)
             }
-        }).then(thing(num))
-    }
-    
-    let number = 1;
-    thing(number)
+        }
+    }  
+    loading()
 })
 
 bodyTop.children[3].addEventListener('click', ()=> { //视频
