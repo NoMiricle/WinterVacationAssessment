@@ -116,9 +116,9 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
     function getRandom(min, max) {
         return Math.floor(Math.random() * (max - min +1))
     }
-    async function loading() {
+    async function loading() { //加载
         for(let i = 1; i < 51; i++){
-            let random = getRandom(1,2)
+            let random = getRandom(1,2) //随机文章还是问题
             if(random === 0) { //文章
                 await getArticle('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/essays', i)
             }else { //问题
