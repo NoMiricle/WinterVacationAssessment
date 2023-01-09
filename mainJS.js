@@ -1,25 +1,62 @@
 let bodyTop = document.querySelector('.bodyTop')
 let mainContent = document.querySelector('.mainContent')
+let topdiv = document.querySelector('.top')
+let backToTop = document.querySelector('.backToTop')
+let searchBox = document.querySelector('.searchBox')
+let downdiv = document.querySelector('.down')
+
+window.addEventListener('scroll', ()=> { //页面滚动事件
+    if(document.documentElement.scrollTop >= 260) { //顶部搜索栏切换
+        topdiv.children[0].style.top = '-60px'
+        backToTop.style.visibility = 'visible'
+    }else {
+        topdiv.children[0].style.top = '0px'
+        backToTop.style.visibility = 'hidden'
+    }
+})
+backToTop.addEventListener('click', ()=> { //回到顶部
+    document.documentElement.scrollTop = 0
+})
+searchBox.children[0].addEventListener('focus', ()=> { //搜索框焦点事件
+    searchBox.style.width = '490px'
+    searchBox.nextElementSibling.style.visibility = 'hidden'
+})
+searchBox.children[0].addEventListener('blur', ()=> { //搜索框焦点事件
+    searchBox.style.width = '400px'
+    searchBox.nextElementSibling.style.visibility = 'visible'
+})
 
 bodyTop.children[0].addEventListener('click', ()=> { //关注
     for(let i = 0; i < bodyTop.children.length; i++) {
         bodyTop.children[i].style.color = 'black'
+        downdiv.children[0].children[0].children[i].style.color = 'black'
     }
     bodyTop.children[0].style.color = 'royalblue'
+    downdiv.children[0].children[0].children[0].style.color = 'royalblue' 
+})
+downdiv.children[0].children[0].children[0].addEventListener('click', ()=> { //同上
+    bodyTop.children[0].click()
 })
 
 bodyTop.children[1].addEventListener('click', ()=> { //推荐
     for(let i = 0; i < bodyTop.children.length; i++) {
         bodyTop.children[i].style.color = 'black'
+        downdiv.children[0].children[0].children[i].style.color = 'black'
     }
     bodyTop.children[1].style.color = 'royalblue'
+    downdiv.children[0].children[0].children[1].style.color = 'royalblue'
+})
+downdiv.children[0].children[0].children[1].addEventListener('click', ()=> { //同上
+    bodyTop.children[1].click()
 })
 
 bodyTop.children[2].addEventListener('click', ()=> { //热榜
     for(let i = 0; i < bodyTop.children.length; i++) {
         bodyTop.children[i].style.color = 'black'
+        downdiv.children[0].children[0].children[i].style.color = 'black'
     }
     bodyTop.children[2].style.color = 'royalblue'
+    downdiv.children[0].children[0].children[2].style.color = 'royalblue'
 
     async function getArticle(url, num){ //获取文章
         let obj = {
@@ -130,12 +167,20 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
     }  
     loading()
 })
+downdiv.children[0].children[0].children[2].addEventListener('click', ()=> { //同上
+    bodyTop.children[2].click()
+})
 
 bodyTop.children[3].addEventListener('click', ()=> { //视频
     for(let i = 0; i < bodyTop.children.length; i++) {
         bodyTop.children[i].style.color = 'black'
+        downdiv.children[0].children[0].children[i].style.color = 'black'
     }
     bodyTop.children[3].style.color = 'royalblue'
+    downdiv.children[0].children[0].children[3].style.color = 'royalblue'
+})
+downdiv.children[0].children[0].children[3].addEventListener('click', ()=> { //同上
+    bodyTop.children[3].click()
 })
 
 bodyTop.children[2].click()//默认为热榜
