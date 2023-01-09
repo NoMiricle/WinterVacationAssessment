@@ -48,7 +48,10 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
                         },
                         body: JSON.stringify(obj)
                     })
-                    console.log(result.json())
+                    console.log(await result.json())
+                    setTimeout(()=>{
+                        location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/main.html'
+                    }, 3000)
 
                 } catch(err) {
                     console.log(err)
@@ -184,10 +187,9 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
                         },
                         body: JSON.stringify(obj)
                     })
-                    console.log(result.json())
-                    alert('注册成功')
+                    console.log(await result.json())
                 } catch(err) {
-                    alert('注册失败')
+                    console.log(err)
                 }
             }
             register()
