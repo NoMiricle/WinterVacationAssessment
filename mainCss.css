@@ -87,7 +87,7 @@ html {
     outline: none;
     width: 328px;
     height: 24px;
-    background-color: #f6f6f6;
+    background-color: none;
 }
 .searchBox>span {
     position: absolute;
@@ -396,8 +396,6 @@ html {
     width: 100%;
     height: 150px;
     background-color: white;
-
-    cursor: pointer;
 }
 .mainContent>ul>li>span:nth-of-type(1) {
     position: absolute;
@@ -424,6 +422,11 @@ html {
     line-height: 30px;
     font-size: 20px;
     font-weight: 600;
+
+    cursor: pointer;
+}
+.mainContent>ul>li>span:nth-of-type(2):hover {
+    color: #2538a3;
 }
 .mainContent>ul>li>span:nth-of-type(3) {
     position: absolute;
@@ -436,6 +439,10 @@ html {
     
     line-height: 30px;
     font-size: 16px;
+    cursor: pointer;
+}
+.mainContent>ul>li>span:nth-of-type(3):hover {
+    color: #8590a6;
 }
 .mainContent>ul>li>span:nth-of-type(4) {
     position: absolute;
