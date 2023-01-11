@@ -447,12 +447,12 @@ html {
 .mainContent>ul>li>span:nth-of-type(4) {
     position: absolute;
     left: 65px;
-    top: 110px;
+    bottom: 18px;
 }
 .mainContent>ul>li>span:nth-of-type(5) {
     position: absolute;
     left: 85px;
-    top: 110px;
+    bottom: 22px;
 
     font-size: 14px;
     color: #7a7a7a;
@@ -460,15 +460,17 @@ html {
 .mainContent>ul>li>span:nth-of-type(6) {
     position: absolute;
     left: 200px;
-    top: 110px;
+    bottom: 17px;
+
 }
 .mainContent>ul>li>span:nth-of-type(7) {
     position: absolute;
     left: 225px;
-    top: 110px;
+    bottom: 22px;
 
     font-size: 14px;
     color: #7a7a7a;
+    cursor: pointer;
 }
 .mainContent>ul>li>img {
     position: absolute;
