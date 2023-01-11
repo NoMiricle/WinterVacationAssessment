@@ -1,0 +1,464 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+body,
+html {
+    width: 100%;
+}
+.top {
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 999;
+    
+    border-bottom: 1px solid #a7a7a7;
+    height: 60px;
+    width: 100%;
+
+    box-shadow: 0 1px 5px #a7a7a7;
+}
+.top>div {
+    position: relative;
+    top: 0;
+    
+    width: 100%;
+    height: 120px;
+    transition: all 0.3s;
+}
+.up {
+    float: left;
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: #fff;
+}
+.topUpMain {
+    position: relative;
+    
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+.topUpMain>ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 375px;
+    height: 100%;
+}
+.topUpMain>ul>li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.topUpMain>ul>li>a {
+    color: #8590a6;
+    font-size: 15px;
+}
+.topUpMain>ul>li>a:hover {
+    color: royalblue;
+}
+.searchBox {
+    position: absolute;
+    display: inline-block;
+    top: 13px;
+    left: 400px;
+    overflow: hidden;
+
+    border-radius: 17px;
+    width: 400px;
+    height: 34px;
+    background-color: #d7d7d7;
+    transition: all 0.1s;
+    opacity: 0.8;
+}
+.search {
+    position: absolute;
+    left: 17px;
+    top: 5px;
+
+    border: none;
+    outline: none;
+    width: 328px;
+    height: 24px;
+    background-color: #d7d7d7;
+}
+.searchBox>span {
+    position: absolute;
+    display: inline-block;
+    right: 17px;
+    top: 8px;
+
+    width: 17px;
+    height: 17px;
+    background-image: url(./img/sprites.png);
+    background-position: -80px -70px;
+    
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(1) {
+    position: absolute;
+    display: inline-block;
+    left: 820px;
+    top: 13px;
+
+    border-radius: 17px;
+    width: 70px;
+    height: 34px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 34px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    visibility: visible;
+}
+.topUpMain>span:nth-of-type(1):hover {
+    background-color: rgb(46, 82, 190);
+}
+.topUpMain>span:nth-of-type(2) {
+    position: absolute;
+    display: inline-block;
+    left: 910px;
+    top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(2)>span:nth-of-type(1) {
+    float: left;
+
+    padding-left: 11px;
+    padding-top: 5px;
+    width: 40px;
+    height: 30px;
+}
+
+.topUpMain>span:nth-of-type(2)>span:nth-of-type(2) {
+    float: left;
+
+    width: 40px;
+    height: 10px;
+
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    color: #a7a7a7;
+}
+.topUpMain>span:nth-of-type(3) {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(3)>span:nth-of-type(1) {
+    float: left;
+
+    padding-left: 11px;
+    padding-top: 5px;
+    width: 40px;
+    height: 30px;
+}
+.topUpMain>span:nth-of-type(3)>span:nth-of-type(2) {
+    float: left;
+
+    width: 40px;
+    height: 10px;
+
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    color: #a7a7a7;
+}
+.upLogo {
+    position: absolute;
+    display: inline-block;
+    top: 12px;
+    left: 280px;
+
+    width: 70px;
+    height: 35px;
+}
+.userImg {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 290px;
+
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+
+    cursor: pointer;
+}
+
+.down {
+    float: left;
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: #fff;
+}
+.downMain {
+    position: relative;
+    
+    margin: 0 auto;
+    width: 1000px;
+    height: 60px;
+}
+.downMain>ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 300px;
+    height: 60px;
+}
+.downMain>ul>li {
+    height: 100%;
+    
+    color: #767676;
+    line-height: 60px;
+    cursor: pointer;
+}
+.downMain>ul>li:hover {
+    color: black;
+}
+.searchBox2 {
+    position: absolute;
+    display: inline-block;
+    top: 13px;
+    right: 0;
+    overflow: hidden;
+
+    border-radius: 17px;
+    border: 1px solid black;
+    width: 300px;
+    height: 34px;
+}
+.search2 {
+    position: absolute;
+    left: 17px;
+    top: 5px;
+
+    border: none;
+    outline: none;
+    width: 228px;
+    height: 24px;
+    background-color: white;
+}
+.searchBox2>span {
+    position: absolute;
+    display: inline-block;
+    right: 17px;
+    top: 8px;
+
+    width: 17px;
+    height: 17px;
+    background-image: url(./img/sprites.png);
+    background-position: -80px -70px;
+    
+    cursor: pointer;
+}
+.down>span:nth-of-type(1) {
+    position: absolute;
+    display: inline-block;
+    right: 270px;
+    top: 13px;
+
+    border-radius: 17px;
+    width: 70px;
+    height: 34px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 34px;
+    color: #f5f5f5;
+    cursor: pointer;
+    font-size: 14px;
+}
+.down>span:nth-of-type(1):hover {
+    background-color: #1d309f;
+}
+.downLogo {
+    position: absolute;
+    display: inline-block;
+    top: 12px;
+    left: 280px;
+
+    width: 70px;
+    height: 35px;
+}
+
+.body {
+    position: relative;
+    width: 100%;
+    background-color: #f3f1f1;
+}
+.mainBox>div:nth-of-type(1) {
+    width: 100%;
+    height: 80px;
+}
+.mainBox {
+    width: 1000px;
+    /* height: 2000px; */
+    margin: 0 auto;
+}
+.selfBox {
+    position: relative;
+
+    border-radius: 2px;
+    width: 100%;
+    height: 300px;
+    background-color: #fff;
+
+    box-shadow: 0 2px 3px #767676;
+}
+.backgroundImg {
+    display: inline-block;
+    width: 100%;
+    height: 140px;
+    background-color: #828282;
+}
+.headPortrait {
+    display: inline-block;
+    position: absolute;
+    top: 80px;
+    left: 25px;
+    overflow: hidden;
+    
+    border: 4px solid #fff;
+    border-radius: 10px;
+    width: 170px;
+    height: 170px;
+}
+.headPortrait>img {
+    width: 162px;
+    height: 162px;
+}
+.userName {
+    display: inline-block;
+    position: absolute;
+    top: 145px;
+    left: 230px;
+    
+    height: 50px;
+    line-height: 50px;
+    font-size: 27px;
+    font-weight: 700;
+}
+.userGender {
+    display: inline-block;
+    position: absolute;
+    top: 200px;
+    left: 240px;
+    
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.userLocation {
+    display: inline-block;
+    position: absolute;
+    right: 25px;
+    top: 95px;
+
+    width: 105px;
+    height: 25px;
+    background-color: #575757;
+
+    color: hsla(0,0%,100%,.8);
+    line-height: 25px;
+}
+.userLocation>svg {
+    vertical-align: center;
+}
+.uploadBackground {
+    display: inline-block;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+
+    border-radius: 2px;
+    border: 1px solid rgb(211, 211, 211);
+    width: 150px;
+    height: 35px;
+
+    cursor: pointer;
+}
+.uploadBackground>span:nth-of-type(1) {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+}
+.uploadBackground>span:nth-of-type(2) {
+    position: absolute;
+    left: 40px;
+
+    height: 33px;
+
+    line-height: 33px;
+    color: rgb(211, 211, 211);
+    font-size: 15px;
+}
+.editImformation {
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+
+    border: 1px solid royalblue;
+    border-radius: 3px;
+    width: 140px;
+    height: 40px;
+
+    color: royalblue;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+}
+.editImformation:hover {
+    background-color: rgba(78, 161, 255, 0.429);
+}
+
+.mainContent {
+    position: relative;
+    
+    margin-top: 15px;
+    width: 700px;
+    height: 500px;
+    background-color: #fff;
+}
+.check {
+    float: left;
+    display: flex;
+    
+    width: 100%;
+    height: 60px;
+}
+.check>li {
+    margin: 0 10px;
+    width: 32px;
+    height: 100%;
+
+    text-align: center;
+    line-height: 59px;
+}
