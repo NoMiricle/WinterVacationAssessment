@@ -205,6 +205,10 @@ html {
 
     cursor: pointer;
 }
+.userImg>img {
+    width: 40px;
+    height: 40px;
+}
 
 .down {
     float: left;
