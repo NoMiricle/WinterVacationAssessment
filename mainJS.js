@@ -6,6 +6,7 @@ let searchBox = document.querySelector('.searchBox')
 let downdiv = document.querySelector('.down')
 let activity = document.querySelector('.activity')
 let body = document.querySelector('.body')
+let userImg = document.querySelector('.userImg')
 
 window.addEventListener('scroll', ()=> { //页面滚动事件
     if(document.documentElement.scrollTop >= 260) { //顶部搜索栏切换
@@ -22,6 +23,7 @@ backToTop.addEventListener('click', ()=> { //回到顶部
 searchBox.children[0].addEventListener('focus', ()=> { //搜索框焦点事件
     searchBox.style.width = '490px'
     searchBox.style.backgroundColor = 'white'
+    searchBox.children[0].style.backgroundColor = 'white'
     searchBox.style.border = '1px solid black'
     searchBox.style.opacity = 1
     searchBox.nextElementSibling.style.visibility = 'hidden'
@@ -30,6 +32,7 @@ searchBox.children[0].addEventListener('blur', ()=> { //搜索框焦点移除事
     searchBox.style.width = '400px'
     searchBox.nextElementSibling.style.visibility = 'visible'
     searchBox.style.backgroundColor = '#f6f6f6'
+    searchBox.children[0].style.backgroundColor = '#f6f6f6'
     searchBox.style.opacity = 0.6
     searchBox.style.border = 'none'
 })
