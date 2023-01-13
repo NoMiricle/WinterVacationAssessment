@@ -1,0 +1,687 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+body,
+html {
+    width: 100%;
+    background-color: #d8d8d84e;
+}
+.questionBox {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 960px;
+    z-index: 9999;
+}
+.questionBox>span {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    
+    opacity: 0.6;
+}
+.questionBox>div {
+    display: inline-block;
+    position: relative;
+
+    width: 540px;
+    height: 250px;
+    background-color: #fff;
+    z-index: 99999;
+}
+.questionBox>div>span:nth-of-type(1) {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+
+    width: 40px;
+    height: 40px;
+}
+.questionBox>div>span:nth-of-type(1)>img {
+    width: 100%;
+    height: 100%;
+}
+.questionBox>div>input {
+    position: absolute;
+    overflow: auto;
+    top: 30px;
+    left: 80px;
+
+    border: none;
+    width: 430px;
+    height: 40px;
+    background-color: #fff;
+
+    outline: none;
+    font-size: 18px;
+}
+.questionBox>div>textarea {
+    position: absolute;
+    top: 130px;
+    left: 25px;
+    overflow: auto;
+    
+    width: 490px;
+    height: 0px;
+    
+    outline: none;
+    font-size: 16px;
+    opacity: 0;
+}
+.questionBox>div>span:nth-of-type(2) {
+    display: inline-block;
+    position: absolute;
+    bottom: 40px;
+    right: 25px;
+
+    border-radius: 5px;
+    width: 90px;
+    height: 32px;
+    background-color: rgb(59, 93, 198);
+    
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.questionBox>div>span:nth-of-type(3) {
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    right: -50px;
+
+    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    
+    cursor: pointer;
+    color: #fff;
+}
+.top {
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    z-index: 999;
+    
+    border-bottom: 1px solid #a7a7a7;
+    height: 60px;
+    width: 100%;
+
+    box-shadow: 0 1px 5px #a7a7a7;
+}
+.top>div {
+    position: relative;
+    top: 0;
+    
+    width: 100%;
+    height: 120px;
+    transition: all 0.3s;
+}
+.up {
+    float: left;
+    position: relative;
+    height: 60px;
+    width: 100%;
+    background-color: #fff;
+}
+.topUpMain {
+    position: relative;
+    
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+.topUpMain>ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 375px;
+    height: 100%;
+}
+.topUpMain>ul>li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.topUpMain>ul>li>a {
+    color: #8590a6;
+    font-size: 15px;
+}
+.topUpMain>ul>li>a:hover {
+    color: royalblue;
+}
+.searchBox {
+    position: absolute;
+    display: inline-block;
+    top: 13px;
+    left: 400px;
+    overflow: hidden;
+
+    border-radius: 17px;
+    width: 400px;
+    height: 34px;
+    background-color: #d7d7d7;
+    transition: all 0.1s;
+    opacity: 0.8;
+}
+.search {
+    position: absolute;
+    left: 17px;
+    top: 5px;
+
+    border: none;
+    outline: none;
+    width: 328px;
+    height: 24px;
+    background-color: #d7d7d7;
+}
+.searchBox>span {
+    position: absolute;
+    display: inline-block;
+    right: 17px;
+    top: 8px;
+
+    width: 17px;
+    height: 17px;
+    background-image: url(./img/sprites.png);
+    background-position: -80px -70px;
+    
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(1) {
+    position: absolute;
+    display: inline-block;
+    left: 820px;
+    top: 13px;
+
+    border-radius: 17px;
+    width: 70px;
+    height: 34px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 34px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    visibility: visible;
+}
+.topUpMain>span:nth-of-type(1):hover {
+    background-color: rgb(46, 82, 190);
+}
+.topUpMain>span:nth-of-type(2) {
+    position: absolute;
+    display: inline-block;
+    left: 910px;
+    top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(2)>span:nth-of-type(1) {
+    float: left;
+
+    padding-left: 11px;
+    padding-top: 5px;
+    width: 40px;
+    height: 30px;
+}
+
+.topUpMain>span:nth-of-type(2)>span:nth-of-type(2) {
+    float: left;
+
+    width: 40px;
+    height: 10px;
+
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    color: #a7a7a7;
+}
+.topUpMain>span:nth-of-type(3) {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+}
+.topUpMain>span:nth-of-type(3)>span:nth-of-type(1) {
+    float: left;
+
+    padding-left: 11px;
+    padding-top: 5px;
+    width: 40px;
+    height: 30px;
+}
+.topUpMain>span:nth-of-type(3)>span:nth-of-type(2) {
+    float: left;
+
+    width: 40px;
+    height: 10px;
+
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    color: #a7a7a7;
+}
+.upLogo {
+    position: absolute;
+    display: inline-block;
+    top: 12px;
+    left: 280px;
+
+    width: 70px;
+    height: 35px;
+}
+.userImg {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 290px;
+
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+
+    cursor: pointer;
+}
+.userImg>img {
+    width: 100%;
+    height: 100%;
+}
+.userImg>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    position: relative;
+    
+    margin-bottom: 20px;
+    width: 100%;
+    height: 250px;
+    background-color: #fff;
+    box-shadow: 1px 2px 3px #8590a6;
+}
+.articleTitle {
+    position: absolute;
+    display: inline-block;
+    top: 100px;
+    left: 400px;
+
+    height: 30px;
+
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 700;
+}
+.title>span:nth-of-type(2) {
+    position: absolute;
+    top: 180px;
+    left: 400px;
+
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+.title>span:nth-of-type(3) {
+    position: absolute;
+    top: 180px;
+    left: 540px;
+
+    border-radius: 5px;
+    border: 1px solid royalblue;
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+
+    text-align: center;
+    line-height: 40px;
+    color: royalblue;
+    cursor: pointer;
+}
+.mainContent {
+    position: relative;
+
+    margin: 0 auto;
+    width: 1000px;
+    height: 1400px;
+}
+.article {
+    float: left;
+    position: relative;
+    
+    width: 700px;
+}
+.articleAuthor {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 70px;
+    background-color: #fff;
+}
+.articleAuthor>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    
+    width: 40px;
+    height: 40px;
+}
+.articleAuthor>span:nth-of-type(1)>img {
+    width: 100%;
+    height: 100%;
+}
+.articleAuthor>span:nth-of-type(2) {
+    position: absolute;
+    left: 75px;
+    top: 15px;
+    
+    height: 21px;
+
+    line-height: 21px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.articleAuthor>span:nth-of-type(3) {
+    position: absolute;
+    display: inline-block;
+    left: 75px;
+    top: 40px;
+    overflow: hidden;
+    
+    height: 20px;
+    width: 140px;
+
+    line-height: 20px;
+    font-size: 14px;
+}
+.articleAuthor>span:nth-of-type(4) {
+    position: absolute;
+    display: inline-block;
+    right: 75px;
+    top: 18px;
+    
+    height: 35px;
+    width: 80px;
+    background-color: rgba(135, 207, 235, 0.377);
+
+    line-height: 30px;
+    font-weight: 700; 
+    cursor: pointer;
+}
+.articleAuthor>span:nth-of-type(4)>svg {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+.articleAuthor>span:nth-of-type(4)>span {
+    position: absolute;
+    display: inline-block;
+
+    left: 35px;
+
+    height: 35px;
+
+    line-height: 35px;
+    font-size: 16px;
+    color: royalblue;
+}
+.articleMain {
+    float: left;
+    position: relative;
+    
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    
+    font-size: 16px;
+    line-height: 30px;
+    text-indent: 10px;
+    background-color: #fff;
+}
+.answer {
+    float: left;
+
+    width: 100%;
+}
+.answer>li {
+    display: inline-block;
+
+    margin-bottom: 20px;
+    width: 100%; 
+    background-color: #fff;
+    box-shadow: 1px 2px 3px #8590a6;
+}
+.answer>li>div {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 70px;
+}
+.answer>li>div>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    top: 15px;
+    
+    width: 40px;
+    height: 40px;
+}
+.answer>li>div>span:nth-of-type(1)>img {
+    width: 100%;
+    height: 100%;
+}
+.answer>li>div>span:nth-of-type(2) {
+    position: absolute;
+    left: 75px;
+    top: 15px;
+    
+    height: 30px;
+
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 20px;
+}
+.answer>li>div>span:nth-of-type(3) {
+    position: absolute;
+    display: inline-block;
+    left: 75px;
+    top: 40px;
+    overflow: hidden;
+    
+    height: 20px;
+    width: 140px;
+
+    line-height: 20px;
+    font-size: 14px;
+}
+.answer>li>div>span:nth-of-type(4) {
+    position: absolute;
+    display: inline-block;
+    right: 75px;
+    top: 18px;
+    
+    height: 35px;
+    width: 80px;
+    background-color: rgba(135, 207, 235, 0.377);
+
+    line-height: 30px;
+    font-weight: 700; 
+    cursor: pointer;
+}
+.answer>li>div>span:nth-of-type(4)>svg {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+.answer>li>div>span:nth-of-type(4)>span {
+    position: absolute;
+    display: inline-block;
+
+    left: 35px;
+
+    height: 35px;
+
+    line-height: 35px;
+    font-size: 16px;
+    color: royalblue;
+}
+.answer>li>article {
+    float: left;
+    position: relative;
+    
+    padding: 20px;
+    width: 100%;
+    
+    font-size: 16px;
+    line-height: 30px;
+    text-indent: 10px;
+}
+.rightList {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 280px;
+}
+.aboutAuthor {
+    float: left;
+    position: relative;
+
+    margin-bottom: 20px;
+    width: 100%;
+    height: 280px;
+    background-color: #fff;
+    box-shadow: 1px 2px 3px #8590a6;
+}
+.aboutAuthor>span:nth-of-type(1) {
+    float: left;
+    
+    border-bottom: 1px solid #8590a628;
+    width: 100%;
+    height: 50px;
+
+    line-height: 50px;
+    text-indent: 20px;
+    font-weight: 700;
+}
+.aboutAuthor>span:nth-of-type(2) {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    top: 80px;
+
+    width: 60px;
+    height: 60px;
+}
+.aboutAuthor>span:nth-of-type(2)>img {
+    width: 100%;
+    height: 100%;
+}
+.aboutAuthor>span:nth-of-type(3) {
+    display: inline-block;
+    position: absolute;
+    left: 90px;
+    top: 80px;
+
+    height: 30px;
+    
+    font-weight: 700;
+    line-height: 30px;
+    font-size: 22px;
+}
+.aboutAuthor>span:nth-of-type(4) {
+    display: inline-block;
+    position: absolute;
+    left: 90px;
+    top: 120px;
+    overflow: hidden;
+
+    height: 20px;
+    width: 150px;
+    
+    line-height: 20px;
+    font-size: 16px;
+}
+.aboutAuthor>div {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    left: 20px;
+    top: 160px;
+
+    width: 240px;
+    height: 60px;
+}
+.aboutAuthor>div>span {
+    display: flex;
+    flex-direction: column;
+
+    width: 60px;
+    height: 100%;
+}
+.aboutAuthor>div>span>span {
+    width: 100%;
+    height: 50%;
+
+    line-height: 30px;
+    text-align: center;
+}
+.aboutAuthor>span:nth-of-type(5) {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 15px;
+    left: 40px;
+
+    width: 200px;
+    height: 40px;
+    background-color: royalblue;
+    color: #fff;
+    cursor: pointer;
+}
+.aboutAuthor>span:nth-of-type(5):hover {
+    background-color: rgba(65, 105, 225, 0.528);
+}
