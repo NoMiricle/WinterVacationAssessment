@@ -7,6 +7,8 @@ let downdiv = document.querySelector('.down')
 let activity = document.querySelector('.activity')
 let body = document.querySelector('.body')
 let userImg = document.querySelector('.userImg')
+let writeQuestion = document.querySelector('.writeQuestion')
+let primebody = document.querySelector('body')
 
 window.addEventListener('scroll', ()=> { //页面滚动事件
     if(document.documentElement.scrollTop >= 260) { //顶部搜索栏切换
@@ -35,6 +37,42 @@ searchBox.children[0].addEventListener('blur', ()=> { //搜索框焦点移除事
     searchBox.children[0].style.backgroundColor = '#f6f6f6'
     searchBox.style.opacity = 0.6
     searchBox.style.border = 'none'
+})
+
+writeQuestion.addEventListener('click', ()=> { //提问
+    let questionsBox = document.createElement('div')
+    questionsBox.classList.add('questionBox')
+    questionsBox.innerHTML = `
+        <span></span>
+        <div>
+            <span>
+                <img src="./img/users'headProtrait.jpg" alt="">
+            </span>
+            <input type="text" placeholder="写下你的问题，准确地描述问题更容易得到解答">
+            <textarea placeholder="输入问题背景、条件等详细信息（选填）"></textarea>
+            <span>发布问题</span>
+            <span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18.22 19.28a.75.75 0 1 0 1.06-1.06L13.06 12l6.22-6.22a.75.75 0 0 0-1.06-1.06L12 10.94 5.78 4.72a.75.75 0 0 0-1.06 1.06L10.94 12l-6.22 6.22a.75.75 0 1 0 1.06 1.06L12 13.06l6.22 6.22Z" clip-rule="evenodd"></path>
+                </svg>
+            </span>
+        </div>
+    `
+    primebody.insertBefore(questionsBox, primebody.children[0])
+    questionsBox.children[1].children[4].addEventListener('click', ()=> { //点击叉叉
+        primebody.removeChild(primebody.children[0])
+    })
+    questionsBox.children[1].children[1].addEventListener('input', ()=> {   //输入问题
+        if(questionsBox.children[1].children[1].value != '') {
+            questionsBox.children[1].style.height = '350px'
+            questionsBox.children[1].children[2].style.opacity = 1
+            questionsBox.children[1].children[2].style.height = '100px'
+        }else {
+            questionsBox.children[1].style.height = '250px'
+            questionsBox.children[1].children[2].style.opacity = 0
+            questionsBox.children[1].children[2].style.height = '0px'
+        }
+    })
 })
 
 activity.children[1].addEventListener('click', ()=> { //点击叉叉
@@ -266,6 +304,14 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                         </svg>
                     </span>
                     <span>分享</span>
+                    <span>
+                        <span>
+                            <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
+                                <path d="M10.484 3.307c.673-1.168 2.358-1.168 3.032 0l2.377 4.122a.25.25 0 0 0 .165.12l4.655.987c1.319.28 1.84 1.882.937 2.884l-3.186 3.535a.25.25 0 0 0-.063.193l.5 4.733c.142 1.34-1.222 2.33-2.453 1.782l-4.346-1.938a.25.25 0 0 0-.204 0l-4.346 1.938c-1.231.549-2.595-.442-2.453-1.782l.5-4.733a.25.25 0 0 0-.064-.193L2.35 11.42c-.903-1.002-.382-2.604.937-2.884l4.655-.987a.25.25 0 0 0 .164-.12l2.378-4.122Z"></path>
+                            </svg>
+                        </span>
+                        <span>收藏</span>
+                    </span>
                     <img src="">
                 `
 
