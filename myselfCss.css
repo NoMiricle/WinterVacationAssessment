@@ -14,6 +14,108 @@ body,
 html {
     width: 100%;
 }
+.questionBox {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 960px;
+    z-index: 9999;
+}
+.questionBox>span {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    
+    opacity: 0.6;
+}
+.questionBox>div {
+    display: inline-block;
+    position: relative;
+
+    width: 540px;
+    height: 250px;
+    background-color: #fff;
+    z-index: 99999;
+}
+.questionBox>div>span:nth-of-type(1) {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+
+    width: 40px;
+    height: 40px;
+}
+.questionBox>div>span:nth-of-type(1)>img {
+    width: 100%;
+    height: 100%;
+}
+.questionBox>div>input {
+    position: absolute;
+    overflow: auto;
+    top: 30px;
+    left: 80px;
+
+    border: none;
+    width: 430px;
+    height: 40px;
+    background-color: #fff;
+
+    outline: none;
+    font-size: 18px;
+}
+.questionBox>div>textarea {
+    position: absolute;
+    top: 130px;
+    left: 25px;
+    overflow: auto;
+    
+    width: 490px;
+    height: 0px;
+    
+    outline: none;
+    font-size: 16px;
+    opacity: 0;
+}
+.questionBox>div>span:nth-of-type(2) {
+    display: inline-block;
+    position: absolute;
+    bottom: 40px;
+    right: 25px;
+
+    border-radius: 5px;
+    width: 90px;
+    height: 32px;
+    background-color: rgb(59, 93, 198);
+    
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.questionBox>div>span:nth-of-type(3) {
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    right: -50px;
+
+    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    
+    cursor: pointer;
+    color: #fff;
+}
 .top {
     position: fixed;
     top: 0;
@@ -208,6 +310,19 @@ html {
     background-color: #fff;
 
     cursor: pointer;
+}
+.userImg>img {
+    width: 100%;
+    height: 100%;
+}
+.userImg>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
 .body {
