@@ -230,9 +230,219 @@ html {
     background-color: #fff;
     box-shadow: 0 2px 3px #a7a7a7;
 }
-.uploadImg {
+.headPortrait {
+    display: inline-block;
+    position: absolute;
+    top: 180px;
+    left: 25px;
+    overflow: hidden;
+    
+    border: 4px solid #fff;
+    border-radius: 10px;
+    width: 170px;
+    height: 170px;
+    z-index: 900;
+}
+.headPortrait>img {
+    width: 162px;
+    height: 162px;
+}
+.headPortrait>input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 162px;
+    height: 162px;
+    
+    opacity: 0;
+}
+.Mask {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    background-color: #000;
+
+    width: 100%;
+    height: 100%;
+    
+    opacity: 0.4;
+    cursor: pointer;
+}
+.Mask-content {
+    position: absolute;
+    display: inline-block;
+    left: 33px;
+    top: 51px;
+}
+.Mask-content>svg {
+    margin-left: 30px;
+}
+.UserAvatarEditor-maskInnerText {
+    color: #fff;
+}
+.Background {
     float: left;
+    position: relative;
+
     width: 100%;
     height: 240px;
     background-color: #f3f1f1;
+}
+.uploadBackground {
+    display: inline-block;
+    position: absolute;
+    right: 25px;
+    top: 30px;
+
+    border-radius: 2px;
+    border: 1px solid rgb(211, 211, 211);
+    width: 150px;
+    height: 35px;
+
+    cursor: pointer;
+}
+.uploadBackground>span:nth-of-type(1) {
+    position: absolute;
+    top: 7px;
+    left: 11px;
+}
+.uploadBackground>span:nth-of-type(2) {
+    position: absolute;
+    left: 40px;
+
+    height: 33px;
+
+    line-height: 33px;
+    color: rgb(211, 211, 211);
+    font-size: 15px;
+}
+.uploadBackground>input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.selfImformation {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    
+    height: 1000px;
+    width: 780px;
+}
+.selfImformation>div {
+    position: relative;
+
+    margin-bottom: 20px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    width: 760px;
+    height: 100px;
+}
+.userName {
+    float: left;
+
+    height: 30px;
+
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 25px;
+}
+.editUserName {
+    position: relative;
+    float: left;
+
+    margin-left: 30px;
+    height: 30px;
+    width: 70px;
+
+    cursor: pointer;
+}
+.editUserName>svg {
+    position: absolute;
+    top: 6px;
+}
+.editUserName>span {
+    position: absolute;
+    left: 25px;
+    
+    height: 30px;
+    
+    line-height: 30px;
+    font-size: 14px;
+    color: #175199;
+}
+.backToMyself {
+    float: right;
+
+    height: 30px;
+
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #8590a6;
+}
+
+.selfImformation>li {
+    position: relative;
+
+    margin-bottom: 20px;
+    border-bottom: 1px solid #8590a674;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    width: 760px;
+    height: 100px;
+}
+.selfImformation>li>span:nth-of-type(1) {
+    float: left;
+
+    height: 30px;
+
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 16px;
+}
+.selfImformation>li>div {
+    float: right;
+    width: 562px;
+    height: 100%;
+}
+.selfImformation>li>div>span:nth-of-type(1) {
+    float: left;
+
+    height: 30px;
+
+    line-height: 30px;
+    font-size: 16px;
+}
+.selfImformation>li>div>span:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    margin-left: 10px;
+    height: 30px;
+    width: 150px;
+
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.selfImformation>li>div>span:nth-of-type(2)>svg {
+    position: absolute;
+    top: 6px;
+}
+.selfImformation>li>div>span:nth-of-type(2)>span {
+    position: absolute;
+    left: 25px;
+    
+    height: 30px;
+    
+    line-height: 30px;
+    font-size: 14px;
+    color: #175199;
 }
