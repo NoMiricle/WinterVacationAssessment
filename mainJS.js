@@ -9,6 +9,7 @@ let body = document.querySelector('.body')
 let userImg = document.querySelector('.userImg')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
+let creationCenter = document.querySelector('.creationCenter')
 
 window.addEventListener('scroll', ()=> { //页面滚动事件
     if(document.documentElement.scrollTop >= 260) { //顶部搜索栏切换
@@ -311,6 +312,12 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                             </svg>
                         </span>
                         <span>收藏</span>
+                    </span>
+                    <span>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M13.792 3.681c-.781-1.406-2.803-1.406-3.584 0l-7.79 14.023c-.76 1.367.228 3.046 1.791 3.046h15.582c1.563 0 2.55-1.68 1.791-3.046l-7.79-14.023Z" clip-rule="evenodd"></path>
+                        </svg>
+                        赞同
                     </span>
                     <img src="">
                 `
