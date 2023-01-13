@@ -87,7 +87,6 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
         <input type="text" placeholder="请输入验证码">
         <span>验证码:</span>
         <span class="getVerificationCode">获取验证码</span>
-        <span class="verificationCodeErrow">验证码错误</span>
         <span class="registerBtn">注册</span>
     `
     
@@ -121,26 +120,41 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
         }
     })
     
-    div.children[10].addEventListener('input', ()=> { //判断验证码
-        div.children[13].style.visibility = 'hidden'
-    })
-    
     div.children[12].addEventListener('click', ()=> { //获取验证码
         if(div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden') {
-            async function post() {
-                try {
-                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/verification',{
+            async function post(url) {
+                function formdata (obj = {}) {
+                    let result = ''
+                    for (let name of Object.keys(obj)) {
+                    let value = obj[name];
+                    result +=
+                    '\r\n--XXX' +
+                    '\r\nContent-Disposition: form-data; name=\"'+ name +'\"'+
+                    '\r\n' +
+                    '\r\n' + value
+                    }
+                    return result + '\r\n--XXX--'
+                }
+                let data = {
+                    email: div.children[2].value
+                }
+                console.log(formdata(data))
+                try{
+                    let result = await fetch(url, {
                         method: 'post',
                         headers: {
-                            'Content-Type':'application/json'
-                        }
-                    }) 
-                    console.log(result.json())
-                } catch(err) {
+                            // 'Content-Type':'application/x-www-form-urlencoded'
+                            'Content-Type': 'multipart/form-data;boundary=XXX'
+                        },
+                        body: formdata(data)
+                    })
+                    let res1 = await result.json()
+                    console.log(res1)
+                }catch(err){
                     console.log(err)
                 }
             }
-            post()
+            post('http://81.68.76.44:8080/api/v1/verification')
             //60s再次获取验证码
             div.children[12].classList.add('onclickForbidden') //禁用点击
             div.children[12].innerHTML = `
@@ -169,7 +183,7 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
 
     registerBtn.addEventListener('click', ()=> { //注册按钮点击事件
         
-        if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/ && div.children[13].style.visibility === 'hidden'/*验证码正确*/) {
+        if(div.children[0].value != ''/*用户名不为空*/ && div.children[2].value !=''/*邮箱不为空*/ && div.children[4].style.visibility === 'hidden'/*邮箱格式正确*/ && div.children[5] != ''/*密码不为空*/ && div.children[7].style.visibility === 'hidden'/*密码格式正确*/ && div.children[9].style.visibility === 'hidden'/*再次输入正确密码*/ && div.children[10].value != ''/*验证码不为空*/) {
             async function register() {
                 let obj = 
                 {
