@@ -317,7 +317,7 @@ html {
     color: red;
     visibility: hidden;
 }
-.verificationCodeErrow {
+/* .verificationCodeErrow {
     display: inline-block;
     position: absolute;
     left: 585px;
@@ -329,7 +329,7 @@ html {
     font-size: 15px;
     color: red;
     visibility: hidden;
-}
+} */
 .getVerificationCode {
     position: absolute;
     display: inline-block;
