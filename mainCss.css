@@ -14,6 +14,272 @@ body,
 html {
     width: 100%;
 }
+.replyBox {
+    float: left;
+    position: relative;
+    
+    margin-left: 15%;
+    border: 1px solid #7a7a7a;
+    width: 70%;
+    height: 120px;
+}
+.replyBox>input {
+    position: absolute;
+    top: 10px;
+
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+
+    text-indent: 20px;
+}
+.replyBox>span {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    
+    width: 120px;
+    height: 30px;
+    background-color: royalblue;
+    
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+}
+.checkAllCommentBox {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 960px;
+    z-index: 9999;
+}
+.checkAllCommentBox>span {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    
+    opacity: 0.6;
+}
+.checkAllCommentBox>div {
+    float: left;
+    position: relative;
+    
+    width: 700px;
+    height: 800px;
+    background-color: #8c8c8c;
+    z-index: 99999;
+}
+.checkAllCommentBox>div>span {
+    position: absolute;
+    right: -30px;
+    top: 25px;
+
+    cursor: pointer;
+}
+.checkAllCommentBox>div>div:nth-of-type(1) {
+    position: fixed;
+    float: left;
+
+    border-bottom: 1px solid #8590a669;
+    padding-left: 20px;
+    width: 700px;
+    height: 60px;
+    background-color: #fff;
+
+    line-height: 60px;
+    font-weight: 700;
+}
+.checkAllCommentBox>div>div:nth-of-type(2) {
+    position: fixed;
+    float: left;
+    bottom: 0;
+
+    border-top: 1px solid #8590a669;
+    width: 700px;
+    height: 50px;
+    background-color: #fff;
+}
+.checkAllCommentBox>div>div:nth-of-type(2)>img {
+    float: left;
+    
+    margin: 5px 10px;
+    width: 40px;
+    height: 40px;
+}
+.checkAllCommentBox>div>div:nth-of-type(2)>input {
+    float: left;
+    
+    margin: 6px 10px;
+    width: 620px;
+    height: 38px;
+    outline: none;
+    text-indent: 20px;
+}
+.checkAllCommentBox>div>div:nth-of-type(3) {
+    float: left;
+    width: 100%;
+    height: 60px;
+}
+.checkAllCommentBox>div>div:nth-of-type(4) {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(1) {
+    float: left;
+
+    width: 100%;
+    height: 35px;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(1)>img {
+    float: left;
+
+    margin: 7.5px 20px;
+    width: 20px;
+    height: 20px;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(1)>span {
+    float: left;
+
+    margin: 7.5px 0;
+    height: 20px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>article {
+    float: left;
+
+    margin-left: 50px;
+    width: 600px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    text-indent: 32px;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+
+    height: 100%;
+    line-height: 35px;
+} 
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(2)>span:nth-of-type(2) {
+    position: absolute;
+    right: 100px;
+
+    height: 100%;
+    line-height: 35px;
+
+    cursor: pointer;
+} 
+.checkAllCommentBox>div>div:nth-of-type(4)>div:nth-of-type(2)>span:nth-of-type(3) {
+    position: absolute;
+    right: 40px;
+
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+} 
+.checkAllCommentBox>div>ul {
+    float: left;
+    overflow: auto;
+    
+    height: 540px;
+    width: 100%;
+}
+.checkAllCommentBox>div>ul>li {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+}
+.checkAllCommentBox>div>ul>li>div:nth-of-type(1) {
+    float: left;
+
+    width: 100%;
+    height: 35px;
+}
+.checkAllCommentBox>div>ul>li>div:nth-of-type(1)>img {
+    float: left;
+
+    margin: 7.5px 20px;
+    width: 20px;
+    height: 20px;
+}
+.checkAllCommentBox>div>ul>li>div:nth-of-type(1)>span {
+    float: left;
+
+    margin: 7.5px 0;
+    height: 20px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+.checkAllCommentBox>div>ul>li>article {
+    float: left;
+
+    margin-left: 50px;
+    width: 600px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    text-indent: 32px;
+}
+.checkAllCommentBox>div>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.checkAllCommentBox>div>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+
+    height: 100%;
+    line-height: 35px;
+} 
+.checkAllCommentBox>div>ul>li>div:nth-of-type(2)>span:nth-of-type(2) {
+    position: absolute;
+    right: 100px;
+
+    height: 100%;
+    line-height: 35px;
+
+    cursor: pointer;
+} 
+.checkAllCommentBox>div>ul>li>div:nth-of-type(2)>span:nth-of-type(3) {
+    position: absolute;
+    right: 40px;
+
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+}
+
 .questionBox {
     position: fixed;
     display: flex;
@@ -565,13 +831,13 @@ html {
 }
 .mainContent>ul>li>span:nth-of-type(6) {
     position: absolute;
-    left: 200px;
+    left: 170px;
     bottom: 17px;
 
 }
 .mainContent>ul>li>span:nth-of-type(7) {
     position: absolute;
-    left: 225px;
+    left: 190px;
     bottom: 22px;
 
     font-size: 14px;
@@ -581,7 +847,7 @@ html {
 .mainContent>ul>li>span:nth-of-type(8) {
     position: absolute;
     display: inline-block;
-    left: 280px;
+    left: 225px;
     bottom: 17px;
 
     width: 50px;
@@ -610,6 +876,22 @@ html {
     cursor: pointer;
     color: royalblue;
 }
+.mainContent>ul>li>span:nth-of-type(10) {
+    position: absolute;
+    display: inline-block;
+    left: 280px;
+    bottom: 17px;
+
+    width: 50px;
+    cursor: pointer;
+}
+.mainContent>ul>li>span:nth-of-type(10)>span:nth-of-type(2) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 14px;
+    color: #7a7a7a;
+}
 .mainContent>ul>li>img {
     position: absolute;
     left: 475px;
@@ -619,6 +901,241 @@ html {
     height: 100px;
     background-color: royalblue;
 }
+.mainContent>ul>li>div {
+    position: absolute;
+    bottom: 815px;
+    left: 20px;
+
+
+    width: 660px;
+    height: 50px;
+}
+.mainContent>ul>li>div>img {
+    float: left;
+    
+    margin-left: 10px;
+    height: 100%;
+    width: 50px;
+}
+.mainContent>ul>li>div>input {
+    float: left;
+    
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 40px;
+    width: 590px;
+    outline: none;
+    text-indent: 20px;
+}
+
+.mainContent>ul>li>ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    bottom: 80px;
+    left: 20px;
+
+    border: 1px solid #8590a669;
+    width: 660px;
+    height: 730px;
+}
+.mainContent>ul>li>ul>div {
+    float: left;
+    
+    border-bottom: 1px solid #8590a669;
+    width: 100%;
+    height: 40px;
+
+}
+.mainContent>ul>li>ul>div>span {
+    float: left;
+
+    margin-left: 10px;
+    height: 100%;
+    line-height: 39px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.mainContent>ul>li>ul>li {
+    float: left;
+    position: relative;
+
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 620px;
+}
+.mainContent>ul>li>ul>li>div:nth-of-type(1) {
+    float: left;
+
+    width: 100%;
+    height: 35px;
+}
+.mainContent>ul>li>ul>li>div:nth-of-type(1)>img {
+    float: left;
+
+    margin: 7.5px 20px;
+    width: 20px;
+    height: 20px;
+}
+.mainContent>ul>li>ul>li>div:nth-of-type(1)>span {
+    float: left;
+
+    margin: 7.5px 0;
+    height: 20px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+}
+.mainContent>ul>li>ul>li>article {
+    float: left;
+    overflow: hidden;
+
+    margin-left: 10px;
+    height: 70px;
+    width: 600px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    text-indent: 32px;
+}
+.mainContent>ul>li>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.mainContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+
+    height: 100%;
+    line-height: 35px;
+} 
+.mainContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(2) {
+    position: absolute;
+    right: 100px;
+
+    height: 100%;
+    line-height: 35px;
+
+    cursor: pointer;
+} 
+.mainContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(3) {
+    position: absolute;
+    right: 40px;
+
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+} 
+.mainContent>ul>li>ul>li>ul {
+    float: left;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    margin: 0 25px;
+    width: 570px;
+    height: 300px;
+
+}
+.mainContent>ul>li>ul>li>ul>span {
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 20px;
+
+    width: 130px;
+    height: 30px;
+    background-color: #8590a669;
+
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.mainContent>ul>li>ul>li>ul>li {
+    float: left;
+    position: relative;
+
+    margin-left: 15px;
+    margin-top: 20px;
+    width: 540px;
+}
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(1) {
+    float: left;
+
+    width: 100%;
+    height: 35px;
+}
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(1)>img {
+    float: left;
+
+    margin: 7.5px 20px;
+    width: 20px;
+    height: 20px;
+}
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(1)>span {
+    float: left;
+
+    margin: 7.5px 0;
+    height: 20px;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+}
+.mainContent>ul>li>ul>li>ul>li>article {
+    float: left;
+    overflow: hidden;
+
+    margin-left: 10px;
+    height: 70px;
+    width: 520px;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    text-indent: 32px;
+}
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+
+    height: 100%;
+    line-height: 35px;
+    font-size: 14px;
+} 
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(2) {
+    position: absolute;
+    right: 100px;
+
+    height: 100%;
+    line-height: 35px;
+
+    cursor: pointer;
+    font-size: 14px;
+} 
+.mainContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(3) {
+    position: absolute;
+    right: 40px;
+
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
 .mainContent>span {
     position: absolute;
     bottom: -30px;
