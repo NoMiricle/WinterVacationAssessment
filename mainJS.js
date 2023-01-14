@@ -17,6 +17,25 @@ if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
 console.log(userImformation)
+
+async function getUsersImformation() { //获取用户信息
+    try{
+        let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res1 = await result.json()
+        localStorage.setItem('userImformation', JSON.stringify(res1.data))
+        
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
+getUsersImformation()
+
 if(!userImformation.headPortrait) { //用户未上传过头像
     userImg.children[0].src = "./img/users'headProtrait.jpg"
 }else {
@@ -561,6 +580,11 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                     </span>
                     <img src="">
                 `
+
+                article.children[1].addEventListener('click', ()=> { //点击查看详细
+                    localStorage.setItem('pid', res1.data.posts[i].pid)
+                    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/question.html'
+                })
 
                 article.children[2].addEventListener('click', function grow() { //内容点击展开
                     article.style.height = article.children[2].scrollHeight + article.offsetHeight + 'px' //加高盒子
