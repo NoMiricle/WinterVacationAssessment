@@ -4,6 +4,201 @@ let uploadBackground = document.querySelector('.uploadBackground')
 let backgroundImg = document.querySelector('.Background>img')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
+let userImg = document.querySelector('.userImg')
+let selfImformation = document.querySelector('.selfImformation')
+
+if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
+    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
+}
+let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+
+async function getUsersImformation() { //获取用户信息
+    try{
+        let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res1 = await result.json()
+        localStorage.setItem('userImformation', JSON.stringify(res1.data))
+        
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
+getUsersImformation()
+
+if(!userImformation.headPortrait) { //用户未上传过头像
+    userImg.children[0].src = "./img/users'headProtrait.jpg"
+    headPortrait.children[0].src = "./img/users'headProtrait.jpg"
+}else {
+    userImg.children[0].src = userImformation.headPortrait
+    headPortrait.children[0].src = "userImformation.headPortrait"
+}
+
+selfImformation.children[3].children[1].innerHTML = userImformation.email //个人邮箱
+selfImformation.children[4].children[1].innerHTML = userImformation.create_time //注册时间
+selfImformation.children[0].children[0].innerHTML = userImformation.username //用户名
+if(userImformation.gender === 1) {
+    selfImformation.children[1].children[1].children[0].innerHTML = '男' //个人性别
+}else {
+    selfImformation.children[1].children[1].children[0].innerHTML = '女' //个人性别
+}
+if(!userImformation.introduction) { //用户未上传过介绍
+    selfImformation.children[2].children[1].children[0].innerHTML = '介绍自己哦'
+}else {
+    selfImformation.children[2].children[1].children[0].innerHTML = userImformation.introduction
+}
+
+selfImformation.children[0].children[1].addEventListener('click', ()=> { //修改用户名
+    let div = document.createElement('div')
+    div.classList.add('changeBox')
+    div.innerHTML = `
+        <input type='text'>
+        <span>确认</span>
+        <span>取消</span>
+    `
+    selfImformation.children[0].appendChild(div)
+    div.children[1].addEventListener('click', ()=> { //确认修改
+        if(div.children[0].value != '') {
+            async function put() {
+                let obj = {
+                    'new-username': div.children[0].value
+                }
+                try{
+                    let result = await fetch('http://81.68.76.44:8080/api/v1/username', {
+                        method: 'put',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    let res1 = await result.json()
+                    console.log(res1)
+                    if(res1.code === 0) {
+                        alert('修改成功')
+                        await getUsersImformation()
+                        location.reload()
+                    }else{
+                        alert('修改失败，用户已存在')
+                    }
+                    
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            put()
+        }
+    })
+    div.children[2].addEventListener('click', ()=> { //取消修改
+        selfImformation.children[0].removeChild(selfImformation.children[0].children[3])
+    })
+})
+
+selfImformation.children[1].children[1].children[1].addEventListener('click', ()=> { //修改性别
+    let div = document.createElement('div')
+    div.classList.add('changeBox')
+    div.innerHTML = `
+        <input type='text'>
+        <span>确认</span>
+        <span>取消</span>
+    `
+    selfImformation.children[1].appendChild(div)
+    div.children[1].addEventListener('click', ()=> { //确认修改
+        if(div.children[0].value != '') {
+            if(div.children[0].value === '男'){
+                var gender = 1
+            }else if(div.children[0].value === '女') {
+                var gender = 2
+            }
+            async function put() {
+                let obj = {
+                    'gender': gender,
+                    'introduction': userImformation.introduction,
+                    'headPortrait': userImformation.headPortrait,
+                    'backgroundImg': userImformation.backgroundImg
+                }
+                try{
+                    let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                        method: 'put',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    let res1 = await result.json()
+                    console.log(res1)
+                    if(res1.code === 0) {
+                        alert('修改成功')
+                        await getUsersImformation()
+                        location.reload()
+                    }else{
+                        alert('修改失败')
+                    }
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            put()
+        }
+    })
+    div.children[2].addEventListener('click', ()=> { //取消修改
+        selfImformation.children[1].removeChild(selfImformation.children[1].children[2])
+    })
+})
+
+selfImformation.children[2].children[1].children[1].addEventListener('click', ()=> { //修改介绍
+    let div = document.createElement('div')
+    div.classList.add('changeBox')
+    div.innerHTML = `
+        <input type='text'>
+        <span>确认</span>
+        <span>取消</span>
+    `
+    selfImformation.children[2].appendChild(div)
+    div.children[1].addEventListener('click', ()=> { //确认修改
+        if(div.children[0].value != '') {
+            async function put() {
+                let obj = {
+                    'gender': userImformation.gender,
+                    'introduction': div.children[0].value,
+                    'headPortrait': userImformation.headPortrait,
+                    'backgroundImg': userImformation.backgroundImg
+                }
+                try{
+                    let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                        method: 'put',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    let res1 = await result.json()
+                    console.log(res1)
+                    if(res1.code === 0) {
+                        alert('修改成功')
+                        await getUsersImformation()
+                        location.reload()
+                    }else{
+                        alert('修改失败')
+                    }
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            put()
+        }
+    })
+    div.children[2].addEventListener('click', ()=> { //取消修改
+        selfImformation.children[2].removeChild(selfImformation.children[2].children[2])
+    })
+})
+
 
 searchBox.children[0].addEventListener('focus', ()=> { //搜索框焦点事件
     searchBox.style.width = '490px'
@@ -59,12 +254,44 @@ writeQuestion.addEventListener('click', ()=> { //提问
 })
 
 headPortrait.children[2].onchange = function () { //上传头像
+    
     let fileData = this.files[0]
     let reader = new FileReader()
     reader.readAsDataURL(fileData)
-    reader.onload = function(e) {
-        console.log(e)
-        headPortrait.children[0].setAttribute('src', this.result)
+    reader.onload = function(result) {
+        console.log(result)
+        headPortrait.children[0].src = result.target.result
+        console.log(decodeURIComponent(headPortrait.children[0].src))
+        async function put() {
+            let obj = {
+                'gender': userImformation.gender,
+                'introduction': userImformation.introduction,
+                'headPortrait': headPortrait.children[0].src,
+                'backgroundImg': userImformation.backgroundImg
+            }
+            try{
+                let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                    method: 'put',
+                    headers: {
+                        'Content-Type':'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify(obj)
+                })
+                let res1 = await result.json()
+                console.log(res1)
+                if(res1.code === 0) {
+                    alert('上传成功')
+                    await getUsersImformation()
+                    location.reload()
+                }else{
+                    alert('功能未实现')
+                }
+            }catch(err) {
+                console.log(err)
+            }
+        }
+        put()
     }
 }
 uploadBackground.children[2].onchange = function () { //上传背景
@@ -72,8 +299,38 @@ uploadBackground.children[2].onchange = function () { //上传背景
     let reader = new FileReader()
     reader.readAsDataURL(fileData)
     reader.onload = function(e) {
-        console.log(e)
         // backgroundImg.style.backgroundColor = 'none'
         backgroundImg.setAttribute('src', this.result)
+        console.log(backgroundImg.getAttribute('src'))
+        async function put() {
+            let obj = {
+                'gender': userImformation.gender,
+                'introduction': userImformation.introduction,
+                'headPortrait': userImformation.headPortrait,
+                'backgroundImg': backgroundImg.getAttribute('src')
+            }
+            try{
+                let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                    method: 'put',
+                    headers: {
+                        'Content-Type':'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify(obj)
+                })
+                let res1 = await result.json()
+                console.log(res1)
+                if(res1.code === 0) {
+                    alert('上传成功')
+                    await getUsersImformation()
+                    location.reload()
+                }else{
+                    alert('上传失败')
+                }
+            }catch(err) {
+                console.log(err)
+            }
+        }
+        put()
     }
 }
