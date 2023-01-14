@@ -5,6 +5,12 @@ let backgroundImg = document.querySelector('.Background>img')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
 
+if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
+    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
+}
+
+let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+
 searchBox.children[0].addEventListener('focus', ()=> { //搜索框焦点事件
     searchBox.style.width = '490px'
     searchBox.style.backgroundColor = 'white'
