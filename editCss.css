@@ -14,6 +14,55 @@ body,
 html {
     width: 100%;
 }
+.changeBox {
+    float: left;
+    position: absolute;
+    right: 30%;
+    top: 0;
+    
+    height: 100%;
+    width: 200px;
+}
+.changeBox>input {
+    position: absolute;
+    left: 15%;
+    top: 35px; 
+
+    width: 70%;
+    height: 25px;
+
+    outline: none;
+}
+.changeBox>span:nth-of-type(1) {
+    position: absolute;
+    top: 70px;
+    left: 10%;
+    
+    border-radius: 5px;
+    width: 60px;
+    height: 30px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+.changeBox>span:nth-of-type(2) {
+    position: absolute;
+    top: 70px;
+    right: 10%;
+    
+    border-radius: 5px;
+    width: 60px;
+    height: 30px;
+    background-color: royalblue;
+
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    cursor: pointer;
+}
 .questionBox {
     position: fixed;
     display: flex;
@@ -536,12 +585,12 @@ html {
     font-weight: 700;
     font-size: 16px;
 }
-.selfImformation>li>div {
+.selfImformation>li>div:nth-of-type(1) {
     float: right;
     width: 562px;
     height: 100%;
 }
-.selfImformation>li>div>span:nth-of-type(1) {
+.selfImformation>li>div:nth-of-type(1)>span:nth-of-type(1) {
     float: left;
 
     height: 30px;
@@ -549,7 +598,7 @@ html {
     line-height: 30px;
     font-size: 16px;
 }
-.selfImformation>li>div>span:nth-of-type(2) {
+.selfImformation>li>div:nth-of-type(1)>span:nth-of-type(2) {
     float: left;
     position: relative;
 
@@ -561,11 +610,11 @@ html {
     font-size: 16px;
     cursor: pointer;
 }
-.selfImformation>li>div>span:nth-of-type(2)>svg {
+.selfImformation>li>div:nth-of-type(1)>span:nth-of-type(2)>svg {
     position: absolute;
     top: 6px;
 }
-.selfImformation>li>div>span:nth-of-type(2)>span {
+.selfImformation>li>div:nth-of-type(1)>span:nth-of-type(2)>span {
     position: absolute;
     left: 25px;
     
