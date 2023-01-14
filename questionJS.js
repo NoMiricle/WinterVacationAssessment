@@ -4,12 +4,33 @@ let uploadBackground = document.querySelector('.uploadBackground')
 let backgroundImg = document.querySelector('.Background>img')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
+let articleTitle = document.querySelector('.articleTitle')
+let articleAuthorName = document.querySelectorAll('.articleAuthorName')
+let authorIntroduction = document.querySelectorAll('.authorIntroduction')
+let articleMain = document.querySelector('.articleMain')
 
 if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
     location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
 }
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+
+async function getAuthorImformation(author_id) { //获取用户信息
+    try{
+        let result1 = await fetch(`http://81.68.76.44:8080/api/v1/users/${author_id}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res2 = await result1.json()
+        console.log(res2)
+        localStorage.setItem('AuthorImformation', JSON.stringify(res2.data))      
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
 
 async function loading() {
     try {
@@ -22,6 +43,17 @@ async function loading() {
         })
         let res1 = await result.json()
         console.log(res1)
+
+        await getAuthorImformation(res1.data.author_id)
+        let authorImformation = JSON.parse(localStorage.getItem('AuthorImformation'))
+        
+        articleTitle.innerHTML = res1.data.title
+        for(let i = 0; i < articleAuthorName.length; i++) {
+            articleAuthorName[i].innerHTML = authorImformation.username
+            authorIntroduction[i].innerHTML = authorImformation.introduction
+            articleMain.innerHTML = res1.data.content
+        }
+
     }catch(err) {
         console.log(err)
     }
