@@ -41,19 +41,52 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
                 }
             
                 try {
-                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/login', {
+                    let result = await fetch('http://81.68.76.44:8080/api/v1/login', {
                         method: 'post',
                         headers: {
                             'Content-Type':'application/json'
                         },
                         body: JSON.stringify(obj)
                     })
-                    console.log(await result.json())
-                    setTimeout(()=>{
-                        location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/main.html'
-                    }, 3000)
+                    let res1 = await result.json()
+                    console.log(res1)
+                    if(res1.code === 0) {
+                        alert('登录成功')
+                        localStorage.setItem('uid',res1.data.uid)
+                        localStorage.setItem('token', res1.data.token)
+
+                        async function getUsersImformation() { //获取用户信息
+                            try{
+                                let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+                                    method: 'get', 
+                                    headers: {
+                                        'Content-Type':'application/json'
+                                    }
+                                })
+                                let res1 = await result.json()
+                                localStorage.setItem('userImformation', JSON.stringify(res1.data))
+                                
+                                
+                            }catch(err) {
+                                console.log(err)
+                            } 
+                        }
+                        getUsersImformation()
+
+                        setTimeout(()=>{
+                            location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/main.html'
+                        }, 2000)
+                    }else if(res1.code === 1006) {
+                        alert('密码错误')
+                    }else if(res1.code === 1005) {
+                        alert('邮箱未注册')
+                    }else if(res1.code === 1004) {
+                        alert('用户不存在')
+                    }
+                    
 
                 } catch(err) {
+                    alert('用户名或者密码不正确')
                     console.log(err)
                 }
             }
@@ -189,19 +222,29 @@ loginBoxTop.children[1].addEventListener('click', ()=>{ //注册按钮点击事�
                 {
                     "username": div.children[0].value,
                     "email": div.children[2].value,
-                    "password": div.children[5],
-                    "re-password": div.children[5],
-                    "verification": div.children[10].value
+                    "password": div.children[5].value,
+                    "re-password": div.children[5].value,
+                    "verification": parseFloat(div.children[10].value)
                 }
                 try {
-                    let result = await fetch('https://mockapi.eolink.com/dA5lczFbe6be637a8338de66e6fff176814e78fc3409f91/api/v1/registration', {
+                    let result = await fetch('http://81.68.76.44:8080/api/v1/registration', {
                         method: 'post',
                         headers: {
                             'Content-Type':'application/json'
                         },
                         body: JSON.stringify(obj)
                     })
-                    console.log(await result.json())
+                    let res1 = await result.json()
+                    console.log(res1)
+                    if(res1.code === 0) {
+                        alert('注册成功')
+                    }else if(res1.code === 1002) {
+                        alert('用户已存在')
+                    }else if(res1.code === 1003) {
+                        alert('邮箱已注册')
+                    }else if(res1.code === 1007) {
+                        alert('验证码错误')
+                    }
                 } catch(err) {
                     console.log(err)
                 }
