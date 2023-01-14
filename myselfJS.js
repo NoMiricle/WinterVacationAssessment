@@ -7,6 +7,41 @@ let uploadBackground = document.querySelector('.uploadBackground')
 let backgroundImg = document.querySelector('.backgroundImg')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
+let userImg = document.querySelector('.userImg')
+
+
+if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
+    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
+}
+
+let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+
+async function getUsersImformation() { //获取用户信息
+    try{
+        let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res1 = await result.json()
+        localStorage.setItem('userImformation', JSON.stringify(res1.data))
+        
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
+getUsersImformation()
+
+if(!userImformation.headPortrait) { //用户未上传过头像
+    userImg.children[0].src = "./img/users'headProtrait.jpg"
+    headPortrait.children[0].src = "./img/users'headProtrait.jpg"
+}else {
+    userImg.children[0].src = userImformation.headPortrait
+    headPortrait.children[0].src = "userImformation.headPortrait"
+}
+
 
 for(let i = 0; i < check.children.length; i++) {
     check.children[i].addEventListener('click', ()=> { //点击切换
@@ -96,6 +131,36 @@ headPortrait.children[1].onchange = function () { //上传头像
     reader.onload = function(e) {
         console.log(e)
         headPortrait.children[0].setAttribute('src', this.result)
+        async function put() {
+            let obj = {
+                'gender': userImformation.gender,
+                'introduction': userImformation.introduction,
+                'headPortrait': headPortrait.children[0].getAttribute('src'),
+                'backgroundImg': userImformation.backgroundImg
+            }
+            try{
+                let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                    method: 'put',
+                    headers: {
+                        'Content-Type':'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify(obj)
+                })
+                let res1 = await result.json()
+                console.log(res1)
+                if(res1.code === 0) {
+                    alert('上传成功')
+                    await getUsersImformation()
+                    location.reload()
+                }else{
+                    alert('上传失败')
+                }
+            }catch(err) {
+                console.log(err)
+            }
+        }
+        put()
     }
 }
 uploadBackground.children[2].onchange = function () { //上传背景
@@ -106,5 +171,36 @@ uploadBackground.children[2].onchange = function () { //上传背景
         console.log(e)
         // backgroundImg.style.backgroundColor = 'none'
         backgroundImg.children[0].setAttribute('src', this.result)
+        console.log(backgroundImg.children[0].getAttribute('src'))
+        async function put() {
+            let obj = {
+                'gender': userImformation.gender,
+                'introduction': userImformation.introduction,
+                'headPortrait': userImformation.headPortrait,
+                'backgroundImg': backgroundImg.children[0].getAttribute('src')
+            }
+            try{
+                let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${userImformation.uid}/info`, {
+                    method: 'put',
+                    headers: {
+                        'Content-Type':'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify(obj)
+                })
+                let res1 = await result.json()
+                console.log(res1)
+                if(res1.code === 0) {
+                    alert('上传成功')
+                    await getUsersImformation()
+                    location.reload()
+                }else{
+                    alert('上传失败')
+                }
+            }catch(err) {
+                console.log(err)
+            }
+        }
+        put()
     }
 }
