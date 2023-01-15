@@ -7,6 +7,24 @@ if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
     location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
 }
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+console.log(userImformation)
+
+async function getUsersImformation() { //获取用户信息
+    try{
+        let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res1 = await result.json()
+        localStorage.setItem('userImformation', JSON.stringify(res1.data))
+        
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
 
 main.addEventListener('input', ()=> { //计数
     count.innerHTML = main.value.length
