@@ -15,7 +15,7 @@ if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
 
-async function getAuthorImformation(author_id) { //获取用户信息
+async function getAuthorImformation(author_id) { //获取作者信息
     try{
         let result1 = await fetch(`http://81.68.76.44:8080/api/v1/users/${author_id}/info`, {
             method: 'get', 
@@ -26,6 +26,23 @@ async function getAuthorImformation(author_id) { //获取用户信息
         let res2 = await result1.json()
         console.log(res2)
         localStorage.setItem('AuthorImformation', JSON.stringify(res2.data))      
+        
+    }catch(err) {
+        console.log(err)
+    } 
+}
+
+async function getUsersImformation() { //获取用户信息
+    try{
+        let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
+            method: 'get', 
+            headers: {
+                'Content-Type':'application/json'
+            }
+        })
+        let res1 = await result.json()
+        localStorage.setItem('userImformation', JSON.stringify(res1.data))
+        
         
     }catch(err) {
         console.log(err)
