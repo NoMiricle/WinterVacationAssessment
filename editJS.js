@@ -28,7 +28,6 @@ async function getUsersImformation() { //获取用户信息
         console.log(err)
     } 
 }
-getUsersImformation()
 
 if(!userImformation.headPortrait) { //用户未上传过头像
     userImg.children[0].src = "./img/users'headProtrait.jpg"
