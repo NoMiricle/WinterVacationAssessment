@@ -34,7 +34,6 @@ async function getUsersImformation() { //获取用户信息
         console.log(err)
     } 
 }
-getUsersImformation()
 
 if(!userImformation.headPortrait) { //用户未上传过头像
     userImg.children[0].src = "./img/users'headProtrait.jpg"
@@ -194,7 +193,7 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
 
                 article.children[1].addEventListener('click', ()=> { //点击查看详细
                     localStorage.setItem('pid', res1.data.posts[i].pid)
-                    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/question.html'
+                    location.href = './question.html'
                 })
                 article.children[2].addEventListener('click', function grow() { //内容点击展开
                     article.style.height = article.children[2].scrollHeight + article.offsetHeight + 'px' //加高盒子
@@ -365,6 +364,7 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
                             let replyBtn = document.querySelectorAll('.replyBtn')
                             for(let i = 0; i < replyBtn.length; i++) {
                                 replyBtn[i].addEventListener('click', ()=> {
+                                    replyBtn[i].style.pointerEvents = 'none'
                                     let replyBox = document.createElement('span')
                                     replyBox.classList.add('replyBox')
                                     replyBox.innerHTML = `
@@ -379,6 +379,7 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
                     let replyBtn = document.querySelectorAll('.replyBtn')
                     for(let i = 0; i < replyBtn.length; i++) {
                         replyBtn[i].addEventListener('click', ()=> {
+                            replyBtn[i].style.pointerEvents = 'none'
                             let replyBox = document.createElement('span')
                             replyBox.classList.add('replyBox')
                             replyBox.innerHTML = `
@@ -755,6 +756,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                             let replyBtn = document.querySelectorAll('.replyBtn')
                             for(let i = 0; i < replyBtn.length; i++) {
                                 replyBtn[i].addEventListener('click', ()=> {
+                                    replyBtn[i].style.pointerEvents = 'none'
                                     let replyBox = document.createElement('span')
                                     replyBox.classList.add('replyBox')
                                     replyBox.innerHTML = `
@@ -768,7 +770,8 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                     }
                     let replyBtn = document.querySelectorAll('.replyBtn')
                     for(let i = 0; i < replyBtn.length; i++) {
-                        replyBtn[i].addEventListener('click', ()=> {
+                        replyBtn[i].addEventListener('click', ()=> { //点击生成回复box
+                            replyBtn[i].style.pointerEvents = 'none'
                             let replyBox = document.createElement('span')
                             replyBox.classList.add('replyBox')
                             replyBox.innerHTML = `
