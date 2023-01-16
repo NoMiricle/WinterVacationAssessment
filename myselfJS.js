@@ -13,7 +13,7 @@ let userGender = document.querySelector('.userGender')
 
 
 if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
-    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
+    location.href = './login.html'
 }
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
@@ -74,6 +74,7 @@ for(let i = 0; i < check.children.length; i++) {
         <span>刚来知乎？去关注我感兴趣的话题</span>
         `
         main.appendChild(li)
+
     })
 }
 
