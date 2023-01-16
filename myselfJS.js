@@ -119,6 +119,40 @@ writeQuestion.addEventListener('click', ()=> { //提问
             questionsBox.children[1].children[2].style.height = '0px'
         }
     })
+    questionsBox.children[1].children[3].addEventListener('click', ()=> { //发布问题
+        if(questionsBox.children[1].children[1].value != '') {
+            async function post() {
+                let obj = {
+                    type: 1, //问题类
+                    topic_id: 1,
+                    title: questionsBox.children[1].children[1].value,
+                    content: questionsBox.children[1].children[2].value
+                }
+                try {
+                    let result = await fetch('http://81.68.76.44:8080/api/v1/post', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    let res = await result.json()
+                    console.log(res)
+                    if(res.code === 0) {
+                        alert('提问成功')
+                        location.reload()
+                    }else {
+                        alert('发布失败')
+                    }
+                    
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            post()
+        }
+    })
 })
 
 check.children[0].click() //初始选中
