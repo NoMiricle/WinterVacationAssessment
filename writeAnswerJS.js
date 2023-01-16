@@ -95,7 +95,7 @@ async function getArticleReply() { //获取帖子的评论
                     `
                     li1.insertBefore(replyBox, li1.children[li1.children.length - 1])
                     replyBox.children[1].addEventListener('click', ()=> { //上传回复
-                        if(replyBox.children[1].value != '') {
+                        if(replyBox.children[0].value != '') {
                             async function replyReply() {
                                 let replyObj = {
                                     parent_id: data[i].cid,
@@ -174,11 +174,8 @@ async function getArticleReply() { //获取帖子的评论
                                             203
                                         </span>
                                     </div>
-                                    <ul class="floor2">
-                                        <div>
-                                            <span>0</span>
-                                            <span>条评论</span>
-                                        </div>
+                                    <ul class="floor3">
+
                                     </ul>
                                 `
         
@@ -192,7 +189,7 @@ async function getArticleReply() { //获取帖子的评论
                                     `
                                     li2.insertBefore(replyBox, li2.children[li2.children.length - 1])
                                     replyBox.children[1].addEventListener('click', ()=> { //上传回复
-                                        if(replyBox.children[1].value != '') {
+                                        if(replyBox.children[0].value != '') {
                                             async function replyReply() {
                                                 let replyObj = {
                                                     parent_id: data2[i].cid,
@@ -240,6 +237,8 @@ async function getArticleReply() { //获取帖子的评论
                                         let res3 = await result3.json()
                                         let data3 = res3.data
                                         console.log('帖子评论3' , data3)
+
+                                        
                     
                                         for(let i = 0; i < data3.length; i++) {
                                             let li3 = document.createElement('li')
@@ -266,9 +265,6 @@ async function getArticleReply() { //获取帖子的评论
                                                         203
                                                     </span>
                                                 </div>
-                                                <ul class="floor3">
-                                                    
-                                                </ul>
                                             `
                                             li3.children[2].children[1].addEventListener('click', ()=> {
                                                 li3.children[2].children[1].style.pointerEvents = 'none'
@@ -280,13 +276,13 @@ async function getArticleReply() { //获取帖子的评论
                                                 `
                                                 li3.insertBefore(replyBox, li3.children[li3.children.length - 1])
                                                 replyBox.children[1].addEventListener('click', ()=> { //上传回复
-                                                    if(replyBox.children[1].value != '') {
+                                                    if(replyBox.children[0].value != '') {
                                                         async function replyReply() {
                                                             let replyObj = {
-                                                                parent_id: data[i].parent_id + 1,
-                                                                root_id: data[i].root_id + 1,
-                                                                commented_uid:data[i].commented_uid,
-                                                                post_id: data[i].post_id,
+                                                                parent_id: data3[i].cid,
+                                                                root_id: data3[i].cid,
+                                                                commented_uid:data3[i].commented_uid,
+                                                                post_id: data3[i].post_id,
                                                                 content: replyBox.children[0].value
                                                             }
                                                             console.log(replyObj)
@@ -301,7 +297,7 @@ async function getArticleReply() { //获取帖子的评论
                                                                 })
                                                                 let replyres = await replyResult.json()
                                                                 console.log(replyres)
-                                                                // location.reload()
+                                                                location.reload()
                                                             }catch(err) {
                                                                 console.log(err)
                                                             }
@@ -362,24 +358,6 @@ async function getquestionImformation() { //获取问题信息
     }
 }
 
-// let replyBtn = document.querySelectorAll('.replyBtn')
-// for(let i = 0; i < replyBtn.length; i++) {
-//     replyBtn[i].addEventListener('click', ()=> { //点击生成回复box
-//         replyBtn[i].style.pointerEvents = 'none'
-//         let replyBox = document.createElement('span')
-//         replyBox.classList.add('replyBox')
-//         replyBox.innerHTML = `
-//             <input type='text'>
-//             <span class='fetchReplyBtn'>回复</span>
-//         `
-//         replyBtn[i].parentNode.parentNode.insertBefore(replyBox, replyBtn[i].parentNode.parentNode.children[replyBtn[i].parentNode.parentNode.children.length - 1])
-
-//         replyBox.children[1].addEventListener('click', ()=> { //回复问题
-            
-//         })
-//     })
-// }
-
 async function loading() {
     try{
         await getArticleReply()
@@ -392,7 +370,7 @@ async function loading() {
 }
 loading()
 
-bigReplyBtn.addEventListener('click', ()=> {
+bigReplyBtn.addEventListener('click', ()=> { //大回复按钮
     if(answerArea.value != '') {
         async function post() {
             let obj = {
@@ -410,6 +388,7 @@ bigReplyBtn.addEventListener('click', ()=> {
                 })
                 let res1 = await result.json()
                 console.log(res1)
+                alert('回复成功')
             }catch(err) {
                 console.log(err)
             }
@@ -477,6 +456,40 @@ writeQuestion.addEventListener('click', ()=> { //提问
             questionsBox.children[1].style.height = '250px'
             questionsBox.children[1].children[2].style.opacity = 0
             questionsBox.children[1].children[2].style.height = '0px'
+        }
+    })
+    questionsBox.children[1].children[3].addEventListener('click', ()=> { //发布问题
+        if(questionsBox.children[1].children[1].value != '') {
+            async function post() {
+                let obj = {
+                    type: 1, //问题类
+                    topic_id: 1,
+                    title: questionsBox.children[1].children[1].value,
+                    content: questionsBox.children[1].children[2].value
+                }
+                try {
+                    let result = await fetch('http://81.68.76.44:8080/api/v1/post', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        body: JSON.stringify(obj)
+                    })
+                    let res = await result.json()
+                    console.log(res)
+                    if(res.code === 0) {
+                        alert('提问成功')
+                        location.reload()
+                    }else {
+                        alert('发布失败')
+                    }
+
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            post()
         }
     })
 })
