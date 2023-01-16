@@ -297,7 +297,7 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
                                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                             </svg>
-                                            0
+                                            ${res2.data.comments[i].stars}
                                         </span>
                                     </div>
 
@@ -305,6 +305,25 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
                                     </ul>
                                 `
                                 comment.appendChild(li)
+
+                                li.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                    async function stars() {
+                                        try {
+                                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${res2.data.comments[i].cid}/star`, {
+                                                method: 'post',
+                                                headers: {
+                                                    'Content-Type':'application/json; charset=utf-8',
+                                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                }
+                                            })
+                                            let res_star = await result_star.json()
+                                            console.log(res_star) 
+                                        }catch(err) {
+                                            console.log(err)
+                                        }
+                                    }
+                                    stars()
+                                })
 
                                 li.children[2].children[1].addEventListener('click', ()=> {  //点击生成回复box
                                     li.children[2].children[1].style.pointerEvents = 'none'
@@ -385,13 +404,32 @@ bodyTop.children[1].addEventListener('click', ()=> { //推荐
                                                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                                             </svg>
-                                                            203
+                                                            ${data3[i].stars}
                                                         </span>
                                                     </div>
 
                                                 `
 
                                                 li.children[3].appendChild(li2)
+
+                                                li2.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                                    async function stars() {
+                                                        try {
+                                                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${data3[i].cid}/star`, {
+                                                                method: 'post',
+                                                                headers: {
+                                                                    'Content-Type':'application/json; charset=utf-8',
+                                                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                                }
+                                                            })
+                                                            let res_star = await result_star.json()
+                                                            console.log(res_star) 
+                                                        }catch(err) {
+                                                            console.log(err)
+                                                        }
+                                                    }
+                                                    stars()
+                                                })
                         
                                                 li2.children[2].children[1].addEventListener('click', ()=> {
                                                     li2.children[2].children[1].style.pointerEvents = 'none'
@@ -599,6 +637,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                 }
             })
             let res1 = await result1.json()
+            console.log(res1)
             
             mainContent.children[0].innerHTML = ''
             
@@ -675,7 +714,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                             })
 
                             let res2 = await result2.json()
-                            console.log(res2)
+                            console.log( '第二层',res2)
 
                             let comment = document.createElement('ul')
                             let writeComment = document.createElement('div')
@@ -719,7 +758,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                             </svg>
-                                            0
+                                            ${res2.data.comments[i].stars}
                                         </span>
                                     </div>
 
@@ -727,6 +766,25 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                                     </ul>
                                 `
                                 comment.appendChild(li)
+
+                                li.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                    async function stars() {
+                                        try {
+                                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/posts/${res1.data.posts[i].pid}/star`, {
+                                                method: 'post',
+                                                headers: {
+                                                    'Content-Type':'application/json; charset=utf-8',
+                                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                }
+                                            })
+                                            let res_star = await result_star.json()
+                                            console.log(res_star) 
+                                        }catch(err) {
+                                            console.log(err)
+                                        }
+                                    }
+                                    stars()
+                                })
 
                                 li.children[2].children[1].addEventListener('click', ()=> {  //点击生成回复box
                                     li.children[2].children[1].style.pointerEvents = 'none'
@@ -781,7 +839,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                                         })
                                         let res3 = await result2.json()
                                         let data3 = res3.data
-                                        console.log('帖子评论2' , data3)
+                                        console.log('帖子评论3' , data3)
                                         
                                         if(data3.length > 0){
                 
@@ -790,7 +848,7 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                                                 li2.innerHTML = `
                                                     <div>
                                                         <img src="./img/users'headProtrait.jpg">
-                                                        <span>name</span>
+                                                        <span>${data3[i].author}</span>
                                                     </div>
                                                     
                                                     <article>${data3[i].content}</article>
@@ -807,13 +865,32 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                                                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                                             </svg>
-                                                            203
+                                                            ${data3[i].stars}
                                                         </span>
                                                     </div>
 
                                                 `
 
                                                 li.children[3].appendChild(li2)
+
+                                                li2.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                                    async function stars() {
+                                                        try {
+                                                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${data3[i].cid}/star`, {
+                                                                method: 'post',
+                                                                headers: {
+                                                                    'Content-Type':'application/json; charset=utf-8',
+                                                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                                }
+                                                            })
+                                                            let res_star = await result_star.json()
+                                                            console.log(res_star) 
+                                                        }catch(err) {
+                                                            console.log(err)
+                                                        }
+                                                    }
+                                                    stars()
+                                                })
                         
                                                 li2.children[2].children[1].addEventListener('click', ()=> {
                                                     li2.children[2].children[1].style.pointerEvents = 'none'
@@ -877,6 +954,25 @@ bodyTop.children[2].addEventListener('click', ()=> { //热榜
                     }
                     getArticleReply()
                     
+                })
+
+                article.children[2].children[3].addEventListener('click', ()=> { //点赞
+                    async function stars() {
+                        try {
+                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/posts/${res1.data.posts[i].pid}/star`, {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type':'application/json; charset=utf-8',
+                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                }
+                            })
+                            let res_star = await result_star.json()
+                            console.log(res_star) 
+                        }catch(err) {
+                            console.log(err)
+                        }
+                    }
+                    stars()
                 })
 
                 mainContent.children[0].appendChild(article)
