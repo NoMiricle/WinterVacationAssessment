@@ -15,6 +15,42 @@ html {
     width: 100%;
     background-color: #d8d8d84e;
 }
+.replyBox {
+    float: left;
+    position: relative;
+    
+    margin-left: 15%;
+    border: 1px solid #7a7a7a;
+    background-color: #fff;
+    width: 70%;
+    height: 120px;
+}
+.replyBox>input {
+    position: absolute;
+    top: 10px;
+
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+
+    text-indent: 20px;
+}
+.replyBox>span {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    
+    width: 120px;
+    height: 30px;
+    background-color: royalblue;
+    
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+}
 .questionBox {
     position: fixed;
     display: flex;
@@ -470,7 +506,7 @@ html {
     position: relative;
     
     padding: 20px;
-    margin-bottom: 20px;
+    
     width: 100%;
     
     font-size: 16px;
@@ -478,103 +514,311 @@ html {
     text-indent: 10px;
     background-color: #fff;
 }
-.answer {
+.articleBottom {
     float: left;
-
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 35px;
+    background-color: #fff;
+}
+.articleBottom>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    height: 100%;
+    line-height: 35px;
+}
+.articleBottom>span:nth-of-type(2){
+    position: absolute;
+    right: 100px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+}
+.articleBottom>span:nth-of-type(3){
+    position: absolute;
+    right: 40px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+}
+.replyContent {
+    position: relative;
+    float: left;
+    
     width: 100%;
 }
-.answer>li {
-    display: inline-block;
-
-    margin-bottom: 20px;
-    width: 100%; 
+/* floor1 */
+.replyContent>ul { 
+    float: left;
+    position: relative;
+    
+    margin: 0 0 20px 0;
+    width: 700px;
     background-color: #fff;
-    box-shadow: 1px 2px 3px #8590a6;
+    box-shadow: 1px 2px 3px #8590a656;
 }
-.answer>li>div {
+.replyContent>ul>div:nth-of-type(1) {
+    float: left;
+    position: relative;
+    
+    border-bottom: 1px solid #8590a656;
+    margin: 0 5%;
+    width: 90%;
+    height: 60px;
+}
+.replyContent>ul>div:nth-of-type(1)>span {
+    float: left;
+
+    margin-right: 10px;
+    height: 100%;
+
+    line-height: 60px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.replyContent>ul>li {
     float: left;
     position: relative;
 
-    width: 100%;
-    height: 70px;
+    margin: 20px 5% 0 5%;
+    width: 90%;
 }
-.answer>li>div>span:nth-of-type(1) {
-    position: absolute;
-    left: 25px;
-    top: 15px;
+.replyContent>ul>li>div:nth-of-type(1) {
+    position: relative;
+    float: left;
     
+    width: 100%;
+    height: 40px;
+}
+.replyContent>ul>li>div:nth-of-type(1)>img {
+    float: left;
+    
+    margin: 0 0;
     width: 40px;
     height: 40px;
 }
-.answer>li>div>span:nth-of-type(1)>img {
-    width: 100%;
-    height: 100%;
-}
-.answer>li>div>span:nth-of-type(2) {
-    position: absolute;
-    left: 75px;
-    top: 15px;
+.replyContent>ul>li>div:nth-of-type(1)>span {
+    float: left;
     
-    height: 30px;
-
-    line-height: 30px;
+    margin-left: 10px;
+    height: 100%;
+    font-size: 16px;
+    line-height: 40px;
     font-weight: 700;
-    font-size: 20px;
 }
-.answer>li>div>span:nth-of-type(3) {
-    position: absolute;
-    display: inline-block;
-    left: 75px;
-    top: 40px;
+.replyContent>ul>li>article {
+    float: left;
+    
+    width: 100%;
     overflow: hidden;
     
-    height: 20px;
-    width: 140px;
-
-    line-height: 20px;
-    font-size: 14px;
+    text-indent: 5%;
+    font-size: 16px;
+    line-height: 25px;
 }
-.answer>li>div>span:nth-of-type(4) {
-    position: absolute;
-    display: inline-block;
-    right: 75px;
-    top: 18px;
-    
-    height: 35px;
-    width: 80px;
-    background-color: rgba(135, 207, 235, 0.377);
+.replyContent>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
 
-    line-height: 30px;
-    font-weight: 700; 
+    width: 100%;
+    height: 35px;
+}
+.replyContent>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    height: 100%;
+    line-height: 35px;
+}
+.replyContent>ul>li>div:nth-of-type(2)>span:nth-of-type(2){
+    position: absolute;
+    right: 100px;
+    height: 100%;
+    line-height: 35px;
     cursor: pointer;
 }
-.answer>li>div>span:nth-of-type(4)>svg {
+.replyContent>ul>li>div:nth-of-type(2)>span:nth-of-type(3){
     position: absolute;
-    top: 8px;
-    left: 10px;
-}
-.answer>li>div>span:nth-of-type(4)>span {
-    position: absolute;
-    display: inline-block;
-
-    left: 35px;
-
-    height: 35px;
-
+    right: 40px;
+    height: 100%;
     line-height: 35px;
-    font-size: 16px;
-    color: royalblue;
+    cursor: pointer;
 }
-.answer>li>article {
+/* floor2 */
+.replyContent>ul>li>ul { 
     float: left;
     position: relative;
     
-    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 1px solid #8590a656;
+    border-right: 1px solid #8590a656;
+    border-bottom: 1px solid #8590a656;
+    width: 100%;
+    background-color: #fff;
+}
+.replyContent>ul>li>ul>div:nth-of-type(1) {
+    float: left;
+
+    border-top: 1px solid #8590a656;
+    border-bottom: 1px solid #8590a656;
+    width: 100%;
+    height: 40px;
+}
+.replyContent>ul>li>ul>div:nth-of-type(1)>span {
+    float: left;
+
+    height: 100%;
+    margin-left: 10px;
+
+    line-height: 38px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.replyContent>ul>li>ul>li {
+    float: left;
+    position: relative;
+
+    margin: 20px 5% 0 5%;
+    width: 90%;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(1) {
+    position: relative;
+    float: left;
+    
+    width: 100%;
+    height: 35px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(1)>img {
+    float: left;
+    
+    margin: 7.5px 0;
+    width: 20px;
+    height: 20px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(1)>span {
+    float: left;
+    
+    margin-left: 10px;
+    height: 100%;
+    font-size: 16px;
+    line-height: 35px;
+    font-weight: 700;
+}
+.replyContent>ul>li>ul>li>article {
+    float: left;
+    
     width: 100%;
     
+    text-indent: 5%;
     font-size: 16px;
-    line-height: 30px;
-    text-indent: 10px;
+    line-height: 25px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    height: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(2){
+    position: absolute;
+    right: 100px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.replyContent>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(3){
+    position: absolute;
+    right: 40px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 16px;
+}
+/* floor3 */
+.replyContent>ul>li>ul>li>ul { 
+    float: left;
+    position: relative;
+    
+    width: 100%;
+    background-color: #fff;
+}
+.replyContent>ul>li>ul>li>ul>li {
+    float: left;
+    position: relative;
+
+    margin: 20px 5% 0 5%;
+    width: 90%;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(1) {
+    position: relative;
+    float: left;
+    
+    width: 100%;
+    height: 35px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(1)>img {
+    float: left;
+    
+    margin: 7.5px 0;
+    width: 20px;
+    height: 20px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(1)>span {
+    float: left;
+    
+    margin-left: 10px;
+    height: 100%;
+    font-size: 14px;
+    line-height: 35px;
+    font-weight: 700;
+}
+.replyContent>ul>li>ul>li>ul>li>article {
+    float: left;
+    
+    width: 100%;
+    
+    text-indent: 5%;
+    font-size: 14px;
+    line-height: 25px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(2) {
+    float: left;
+    position: relative;
+
+    width: 100%;
+    height: 35px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(1) {
+    position: absolute;
+    left: 25px;
+    height: 100%;
+    line-height: 35px;
+    font-size: 14px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(2){
+    position: absolute;
+    right: 100px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.replyContent>ul>li>ul>li>ul>li>div:nth-of-type(2)>span:nth-of-type(3){
+    position: absolute;
+    right: 40px;
+    height: 100%;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 14px;
 }
 .rightList {
     float: right;
