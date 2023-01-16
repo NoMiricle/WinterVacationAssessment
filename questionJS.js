@@ -12,12 +12,31 @@ let floor1 = document.querySelector('.floor1')
 let replyBtn1 = document.querySelector('.replyBtn1')
 let article = document.querySelector('.article')
 let articleBottom = document.querySelector('.articleBottom')
+let rightList = document.querySelector('.rightList')
 
 if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
     location.href = './login.html'
 }
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
+
+async function getNumberOfArticle() {
+    try{
+        let result = await fetch('http://81.68.76.44:8080/api/v1/user/essays?page=1&size=1000', {
+            method: 'get',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Authorization': 'Bearer ' +  localStorage.getItem('token')
+            }
+        })
+        let res1 = await result.json()
+        console.log(res1)
+        rightList.children[0].children[4].children[1].children[1].innerHTML = res1.data.posts.length
+    }catch(err) {
+        console.log(err)
+    }
+}
+getNumberOfArticle()
 
 async function getAuthorImformation(author_id) { //获取作者信息
     try{
@@ -91,7 +110,7 @@ async function getArticleReply() { //获取帖子的评论
                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                             </svg>
-                            203
+                            ${data[i].stars}
                         </span>
                     </div>
                     <ul class="floor2">
@@ -101,6 +120,25 @@ async function getArticleReply() { //获取帖子的评论
                         </div>
                     </ul>
                 `
+
+                li1.children[2].children[2].addEventListener('click', ()=> { //点赞
+                    async function stars() {
+                        try {
+                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${data[i].cid}/star`, {
+                                method: 'post',
+                                headers: {
+                                    'Content-Type':'application/json; charset=utf-8',
+                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                }
+                            })
+                            let res_star = await result_star.json()
+                            console.log(res_star) 
+                        }catch(err) {
+                            console.log(err)
+                        }
+                    }
+                    stars()
+                })
     
                 li1.children[2].children[1].addEventListener('click', ()=> {
                     li1.children[2].children[1].style.pointerEvents = 'none'
@@ -188,13 +226,32 @@ async function getArticleReply() { //获取帖子的评论
                                             <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                 <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                             </svg>
-                                            203
+                                            ${data2[i].stars}
                                         </span>
                                     </div>
                                     <ul class="floor3">
 
                                     </ul>
                                 `
+
+                                li2.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                    async function stars() {
+                                        try {
+                                            let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${data2[i].cid}/star`, {
+                                                method: 'post',
+                                                headers: {
+                                                    'Content-Type':'application/json; charset=utf-8',
+                                                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                }
+                                            })
+                                            let res_star = await result_star.json()
+                                            console.log(res_star) 
+                                        }catch(err) {
+                                            console.log(err)
+                                        }
+                                    }
+                                    stars()
+                                })
         
                                 li2.children[2].children[1].addEventListener('click', ()=> {
                                     li2.children[2].children[1].style.pointerEvents = 'none'
@@ -279,10 +336,29 @@ async function getArticleReply() { //获取帖子的评论
                                                         <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
                                                             <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
                                                         </svg>
-                                                        203
+                                                        ${data3[i].stars}
                                                     </span>
                                                 </div>
                                             `
+
+                                            li3.children[2].children[2].addEventListener('click', ()=> { //点赞
+                                                async function stars() {
+                                                    try {
+                                                        let result_star = await fetch(`http://81.68.76.44:8080/api/v1/comments/${data3[i].cid}/star`, {
+                                                            method: 'post',
+                                                            headers: {
+                                                                'Content-Type':'application/json; charset=utf-8',
+                                                                'Authorization': 'Bearer ' + localStorage.getItem('token')
+                                                            }
+                                                        })
+                                                        let res_star = await result_star.json()
+                                                        console.log(res_star) 
+                                                    }catch(err) {
+                                                        console.log(err)
+                                                    }
+                                                }
+                                                stars()
+                                            })
                                             li3.children[2].children[1].addEventListener('click', ()=> {
                                                 li3.children[2].children[1].style.pointerEvents = 'none'
                                                 let replyBox = document.createElement('span')
@@ -380,6 +456,31 @@ async function loading() {
             articleMain.innerHTML = res1.data.content
             articleBottom.children[0].innerHTML = res1.data.create_time
         }
+
+        articleBottom.children[2].innerHTML = `
+            <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
+            <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
+            </svg>${res1.data.stars}
+        `
+
+        articleBottom.children[2].addEventListener('click', ()=> { //点赞
+            async function stars() {
+                try {
+                    let result_star = await fetch(`http://81.68.76.44:8080/api/v1/posts/${res1.data.pid}/star`, {
+                        method: 'post',
+                        headers: {
+                            'Content-Type':'application/json; charset=utf-8',
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        }
+                    })
+                    let res_star = await result_star.json()
+                    console.log(res_star) 
+                }catch(err) {
+                    console.log(err)
+                }
+            }
+            stars()
+        })
 
         await getArticleReply()
 
