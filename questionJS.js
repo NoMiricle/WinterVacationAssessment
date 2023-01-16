@@ -14,7 +14,7 @@ let article = document.querySelector('.article')
 let articleBottom = document.querySelector('.articleBottom')
 
 if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
-    location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/login.html'
+    location.href = './login.html'
 }
 
 let userImformation = JSON.parse(localStorage.getItem('userImformation'))
