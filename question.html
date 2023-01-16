@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./questionCss.css">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <title>问题查看</title>
+    <title>问题、文章查看</title>
 </head>
 <body>
     <div class="top">
@@ -51,7 +51,7 @@
     </div>
 
     <div class="title">
-        <span class="articleTitle">如何看清问题的本质?</span>
+        <span class="articleTitle"></span>
         <span>关注问题</span>
         <span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -75,40 +75,64 @@
                 </span>
             </div>
             <article class="articleMain"></article>
-            <ul class="answer">
-                <li>
+            <div class="articleBottom">
+                <span>time</span>
+                <span class='replyBtn1'>
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
+                        <path fill-rule="evenodd" d="M12 2.75a9.25 9.25 0 1 0 4.737 17.197l2.643.817a1 1 0 0 0 1.25-1.25l-.8-2.588A9.25 9.25 0 0 0 12 2.75Z" clip-rule="evenodd"></path>
+                    </svg>
+                    回复
+                </span>
+                <span>
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="#7a7a7a">
+                        <path d="M8.5 4.078c0-1.834 1.986-2.979 3.573-2.06a4.826 4.826 0 0 1 2.379 4.71l-.114 1.022h3.581c2.53 0 4.334 2.454 3.58 4.868l-1.823 5.833a3.784 3.784 0 0 1-3.848 2.64c-2.372-.147-6.042-.341-8.828-.341H4.5A1.75 1.75 0 0 1 2.75 19V9.5c0-.967.784-1.75 1.75-1.75h.637a3.418 3.418 0 0 0 3.19-2.191c.115-.296.173-.611.173-.928v-.553Z"></path>
+                    </svg>
+                    203
+                </span>
+            </div>
+
+
+            <div class="replyContent">
+                <ul class="floor1">
                     <div>
-                        <span>
-                            <img src="./img/users'headProtrait.jpg">
-                        </span>
-                        <span>name</span>
-                        <span>介绍自己1111111111</span>
-                        <span>
-                            <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="royalblue">
-                                <path fill-rule="evenodd" d="M13.25 3.25a1.25 1.25 0 1 0-2.5 0v7.5h-7.5a1.25 1.25 0 1 0 0 2.5h7.5v7.5a1.25 1.25 0 1 0 2.5 0v-7.5h7.5a1.25 1.25 0 0 0 0-2.5h-7.5v-7.5Z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>关注</span>
-                        </span>
+                        <span>0</span>
+                        <span>个评论</span>
                     </div>
-                    <article></article>
-                </li>
-                <li>
-                    <div>
-                        <span>
-                            <img src="./img/users'headProtrait.jpg">
-                        </span>
-                        <span>name</span>
-                        <span>介绍自己1111111111</span>
-                        <span>
-                            <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="royalblue">
-                                <path fill-rule="evenodd" d="M13.25 3.25a1.25 1.25 0 1 0-2.5 0v7.5h-7.5a1.25 1.25 0 1 0 0 2.5h7.5v7.5a1.25 1.25 0 1 0 2.5 0v-7.5h7.5a1.25 1.25 0 0 0 0-2.5h-7.5v-7.5Z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span>关注</span>
-                        </span>
-                    </div>
-                    <article></article>
-                </li>
-            </ul>
+                    <!-- <li>
+                        <div>
+                            <span>
+                                <img src="./img/users'headProtrait.jpg">
+                            </span>
+                            <span>name</span>
+                            <span>介绍自己1111111111</span>
+                            <span>
+                                <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="royalblue">
+                                    <path fill-rule="evenodd" d="M13.25 3.25a1.25 1.25 0 1 0-2.5 0v7.5h-7.5a1.25 1.25 0 1 0 0 2.5h7.5v7.5a1.25 1.25 0 1 0 2.5 0v-7.5h7.5a1.25 1.25 0 0 0 0-2.5h-7.5v-7.5Z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>关注</span>
+                            </span>
+                        </div>
+                        <article></article>
+                    </li>
+                    <li>
+                        <div>
+                            <span>
+                                <img src="./img/users'headProtrait.jpg">
+                            </span>
+                            <span>name</span>
+                            <span>介绍自己1111111111</span>
+                            <span>
+                                <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="royalblue">
+                                    <path fill-rule="evenodd" d="M13.25 3.25a1.25 1.25 0 1 0-2.5 0v7.5h-7.5a1.25 1.25 0 1 0 0 2.5h7.5v7.5a1.25 1.25 0 1 0 2.5 0v-7.5h7.5a1.25 1.25 0 0 0 0-2.5h-7.5v-7.5Z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>关注</span>
+                            </span>
+                        </div>
+                        <article></article>
+                    </li> -->
+                </ul>
+            </div>
+            
         </div>
 
         <div class="rightList">
