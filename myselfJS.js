@@ -8,6 +8,8 @@ let backgroundImg = document.querySelector('.backgroundImg')
 let writeQuestion = document.querySelector('.writeQuestion')
 let primebody = document.querySelector('body')
 let userImg = document.querySelector('.userImg')
+let userName = document.querySelector('.userName')
+let userGender = document.querySelector('.userGender')
 
 
 if(!localStorage.getItem('uid')) { //如果未登录则回到登录界面
@@ -41,6 +43,13 @@ if(!userImformation.headPortrait) { //用户未上传过头像
     headPortrait.children[0].src = "userImformation.headPortrait"
 }
 
+userName.innerHTML = userImformation.username
+
+if(userImformation.gender === 1) {
+    userGender.innerHTML = '♂'
+}else {
+    userGender.innerHTML = '♀'
+}
 
 for(let i = 0; i < check.children.length; i++) {
     check.children[i].addEventListener('click', ()=> { //点击切换
