@@ -74,7 +74,7 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
                         getUsersImformation()
 
                         setTimeout(()=>{
-                            location.href = 'file:///D:/Learn/Web/LanshanWorks/WinterVacationAssessment/main.html'
+                            location.href = '。/main.html'
                         }, 2000)
                     }else if(res1.code === 1006) {
                         alert('密码错误')
