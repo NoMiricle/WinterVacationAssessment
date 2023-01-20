@@ -55,6 +55,7 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
                         localStorage.setItem('uid',res1.data.uid)
                         localStorage.setItem('token', res1.data.token)
 
+                        div.children[2].style.pointerEvents = 'none'
                         async function getUsersImformation() { //获取用户信息
                             try{
                                 let result = await fetch(`http://81.68.76.44:8080/api/v1/users/${localStorage.getItem('uid')}/info`, {
@@ -74,7 +75,7 @@ loginBoxTop.children[0].addEventListener('click', ()=>{ //登录按钮点击事�
                         getUsersImformation()
 
                         setTimeout(()=>{
-                            location.href = '。/main.html'
+                            location.href = './main.html'
                         }, 2000)
                     }else if(res1.code === 1006) {
                         alert('密码错误')
